@@ -12,7 +12,7 @@
 @section('content')
     <section class="content-header clearfix">
         <h1 class="pull-left">
-         Book Lists
+         Book Add
         </h1>
     </section>
     <section class="content">
@@ -20,7 +20,7 @@
             <div class="col-md-12">
                 <div class="panel panel-white">
                     <div class="panel-body">
-                        List of Books
+                        Add New Book
                     </div>
                 </div>
             </div>

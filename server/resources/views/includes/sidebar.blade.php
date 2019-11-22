@@ -30,6 +30,7 @@
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
             <li class="header">HEADER</li>
+            <li><a href="{{url('admin/dashboard')}}">Dashboard</a></li>
             <li class="treeview active">
                 <a href="#">
                     <i class="fa fa-book"></i><span>Books</span> <i class="fa fa-angle-left pull-right"></i>
@@ -48,14 +49,29 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="users-all">
-                        <a href="">
+                        <a href="{{url('admin/users')}}">
                             <i class="fa fa-list"></i> <span>View All </span>
-                            <span class="pull-right-container">
+                            {{--<span class="pull-right-container">
                                 <small class="label pull-right bg-blue">10</small>
-                            </span>
+                            </span>--}}
                         </a>
                     </li>
-                    <li class="users-add"><a href=""><i class="fa fa-plus"></i>Add New</a></li>
+                </ul>
+            </li>
+            <li class="treeview users">
+                <a href="#">
+                    <i class="fa fa-plus-square"></i> <span>Requests</span>
+                    <span class="pull-right-container">
+                          <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="users-all">
+                        <a href="{{url('admin/mass_requests')}}">
+                            <i class="fa fa-users"></i> <span>Mass Requests </span>
+                        </a>
+                    </li>
+                    <li class=""><a href="{{url('admin/personal_requests')}}"><i class="fa fa-user"></i>Personal Requests</a></li>
                 </ul>
             </li>
             <li class="new_menu">
