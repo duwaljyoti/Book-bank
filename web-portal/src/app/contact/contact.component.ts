@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageTitleService } from '../core/page-title/page-title.service';
 import { ChkService } from '../service/chk.service';
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'angly-contact',
@@ -10,13 +11,11 @@ import { ChkService } from '../service/chk.service';
 export class ContactComponent implements OnInit {
 
   /* Variables */
-  contact : any;
-  
-  lat: number = 30.67995;
-  lng: number = 76.72211;
-  
-  constructor( private pageTitleService: PageTitleService, private service:ChkService ) {
+  contact : any = {};
+  address ='Insight workshop Nepal';
+  mapURL: any;
 
+  constructor( private pageTitleService: PageTitleService, private service:ChkService, public sanitizer: DomSanitizer ) {
     /* Page title */
     this.pageTitleService.setTitle(" Lets Get In Touch ");
 
@@ -31,6 +30,10 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.mapURL = encodeURI('https://maps.google.com/maps?q=' +
+      this.address +
+      '&t=&z=17&ie=UTF8&iwloc=&output=embed');
+    this.mapURL = this.sanitizer.bypassSecurityTrustResourceUrl(this.mapURL);
   }
 
 }

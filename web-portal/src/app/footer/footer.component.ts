@@ -48,8 +48,8 @@ export class FooterComponent implements OnInit {
   /*
    * Object of call to action button.
    */
-  buttonDetails = { url:'pricing', title:'Get Started Today!'}
-  
+  buttonDetails = { url:'contact', title:'Get Started Today!'}
+
 
   /*
    * Socail media information.

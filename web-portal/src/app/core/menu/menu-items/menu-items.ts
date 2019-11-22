@@ -42,7 +42,7 @@ const HEADERMENUITEMS = [
          { state: 'portfolio-v2', name: 'Portfolio V2', type:"link"},
          { state: 'portfolio-v3', name: 'Portfolio V3', type:"link"},
          { state: 'testimonial-v1', name: 'Testimonial V1', type:"link"},
-         { state: 'testimonial-v2', name: 'Testimonial V2', type:"link"}  
+         { state: 'testimonial-v2', name: 'Testimonial V2', type:"link"}
       ]
    },
    {
@@ -101,11 +101,6 @@ const FOOTERMENU = [
       type:"link"
    },
    {
-      state:"pricing",
-      name:"Pricing",
-      type:"link"
-   },
-   {
       state:"contact",
       name:"Contact",
       type:"link"
@@ -136,11 +131,6 @@ const EXPLOREMENU = [
    {
       state: "sign-up",
       name: "Sign Up",
-      type:"link"
-   },
-   {
-      state: "helpdesk",
-      name: "Helpdesk",
       type:"link"
    },
    {

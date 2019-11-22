@@ -9,6 +9,7 @@ import {AboutComponent} from './about/about.component';
 import {SearchComponent} from './search/search.component';
 import {SupportComponent} from './support/support.component';
 import {sidebarWidgetsComponent} from './sidebarWidgets/sidebarWidgets.component';
+import {ContactComponent} from "./contact/contact.component";
 
 export const AppRoutes: Routes = [{
   path: '',
@@ -23,6 +24,9 @@ export const AppRoutes: Routes = [{
     }, {
       path: 'about',
       component: AboutComponent
+    },{
+      path: 'contact',
+      component: ContactComponent
     }, {
       path: 'search',
       component: SearchComponent
