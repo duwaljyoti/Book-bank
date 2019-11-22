@@ -16,11 +16,11 @@ export class ProductlistComponent implements OnInit {
   popularPosts: any;
   productsList: any;
 
-  value = 40;
-  highValue = 60;
+  minValue: number = 50;
+  maxValue: number = 200;
   options: Options = {
     floor: 0,
-    ceil: 100
+    ceil: 250
   };
 
   constructor(private pageTitleService: PageTitleService, private service: ChkService) {

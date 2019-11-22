@@ -12,9 +12,5 @@ body {
 }
 
 .ng5-slider .ng5-slider-bubble {
-    font-size: 22px !important;
-}
-
-.ng5-slider .ng5-slider-bubble:after {
-    content: '%';
+    font-size: 15px !important;
 }
