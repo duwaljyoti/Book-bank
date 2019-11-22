@@ -10,6 +10,7 @@ import {SearchComponent} from './search/search.component';
 import {SupportComponent} from './support/support.component';
 import {sidebarWidgetsComponent} from './sidebarWidgets/sidebarWidgets.component';
 import {ContactComponent} from "./contact/contact.component";
+import {RequestBookComponent} from "./request-book/request-book.component";
 
 export const AppRoutes: Routes = [{
   path: '',
@@ -21,6 +22,9 @@ export const AppRoutes: Routes = [{
     },{
       path: 'home',
       component: HomeComponent
+    }, {
+      path: 'request-book',
+      component: RequestBookComponent
     },
     {
       path: 'features',

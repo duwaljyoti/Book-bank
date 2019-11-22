@@ -1,0 +1,74 @@
+<div class="team pt-6">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-10 mx-auto">
+        <div class="card-body p-0">
+          <form (ngSubmit)="submit(requestBook.value)" [formGroup]="requestBook">
+            <div class="form-row">
+              <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
+                <label class="" for="book-name">Book Name</label>
+                <input [ngClass]="hasError('book_name')?'is-invalid':''" class="form-control"
+                       formControlName="book_name" id="book-name" placeholder="" required type="text">
+                <span *ngIf="checkFieldWithErrorType('book_name', 'required')"
+                      class="text-danger">Book Name is required</span>
+              </div>
+              <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
+                <label class="" for="author-name">Author Name</label>
+                <input [ngClass]="hasError('author_name')?'is-invalid':''" class="form-control"
+                       formControlName="author_name" id="author-name" placeholder="" required type="text">
+                <span *ngIf="checkFieldWithErrorType('author_name', 'required')"
+                      class="text-danger">Author Name is required</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="" for="category">Category</label>
+              <select [ngClass]="hasError('category')?'is-invalid':''" class="form-control" class="form-control"
+                      formControlName="category"
+                      id="category" placeholder="" required>
+                <option *ngFor="let category of categories" value="{{category.value}}">{{category.name}}</option>
+              </select>
+              <span *ngIf="checkFieldWithErrorType('category', 'required')" class="text-danger">
+                Category is not valid
+              </span>
+            </div>
+
+            <div class="form-group">
+              <label class="" for="description">Book Description</label>
+              <textarea [ngClass]="hasError('description')?'is-invalid':''" class="form-control"
+                        formControlName="description" id="description" placeholder="" required rows="4"
+                        rows="5"></textarea>
+              <span *ngIf="checkFieldWithErrorType('description', 'required')"
+                    class="text-danger">Book  is required</span>
+            </div>
+            <div class="form-group mr-4">
+              <label class="radio">
+                <input formControlName="type" id="is_request" name="type" type="radio"
+                       value="is_request">
+                Is Request?
+              </label>
+              &nbsp;&nbsp;
+              <label class="radio">
+                <input formControlName="type" id="is_for_rent" name="type" type="radio"
+                       value="is_for_rent">
+                Is for rent?
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="" for="image">Image </label>
+              <input (change)="handleFileInput($event.target.files)" [ngClass]="hasError('image')?'is-invalid':''" accept="image/*"
+                     class="form-control" formControlName="image" id="image"
+                     type="file">
+              <span *ngIf="checkFieldWithErrorType('image', 'required')"
+                    class="text-danger">Image is required</span>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-dark btn-chk-dark inverse" type="submit">Send Messages</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
