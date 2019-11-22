@@ -31,5 +31,6 @@ Route::group(['namespace'=>'Book','prefix'=>'admin','middleware'=>'auth'], funct
     Route::get('books', 'BookController@index');
 });
 
-/*Route::get('admin/login','Auth\LoginController@showLoginForm')->name('login');
-Route::get('admin/logout','Auth\LoginController@logout')->name('logout');*/
+Route::get('admin/login','Auth\LoginController@showLoginForm')->name('login');
+Route::get('admin/logout','Auth\LoginController@logout')->name('logout');
+Route::post('admin/login','Auth\LoginController@login')->name('postLogin');
