@@ -19,6 +19,10 @@ export const AppRoutes: Routes = [{
       path: '',
       component: HomeComponent
     },{
+      path: 'home',
+      component: HomeComponent
+    },
+    {
       path: 'features',
       component: FeaturesComponent
     }, {
