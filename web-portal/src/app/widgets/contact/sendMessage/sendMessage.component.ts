@@ -13,14 +13,14 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 export class SendMessageComponent implements OnInit {
 
    sendMessageForm : FormGroup;
-
+    isSubmitted = false;
    constructor( private formBuilder : FormBuilder) {
 
       this.sendMessageForm = this.formBuilder.group({
          first_name : [null, [Validators.required] ],
          last_name  : [null, [Validators.required] ],
-         email      : [null, [Validators.required] ],
-         textarea   : [null, [Validators.required] ]
+         email      : [null, [Validators.required, Validators.email] ],
+         message   : [null, [Validators.required] ]
       });
    }
 
@@ -32,6 +32,7 @@ export class SendMessageComponent implements OnInit {
     */
    sendMessage(values:any)
    {
+     this.isSubmitted = true;
      if(this.sendMessageForm.valid)
      {
        console.log(values);
@@ -40,4 +41,22 @@ export class SendMessageComponent implements OnInit {
      }
    }
 
+  hasError(control) {
+    const formControl = this.sendMessageForm.controls[control];
+    if (!formControl.touched &&  !this.isSubmitted) {
+      return false;
+    }
+    return formControl.invalid;
+  }
+
+
+  checkFieldWithErrorType(control, errorType = 'required') {
+    const formControl = this.sendMessageForm.controls[control];
+    if (!formControl.touched &&  !this.isSubmitted) {
+      return false;
+    }
+    if (formControl.hasError(errorType)) {
+      return true;
+    }
+  }
 }

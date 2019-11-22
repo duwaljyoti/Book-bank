@@ -16,10 +16,7 @@ export class ContactComponent implements OnInit {
   mapURL: any;
 
   constructor( private pageTitleService: PageTitleService, private service:ChkService, public sanitizer: DomSanitizer ) {
-    /* Page title */
     this.pageTitleService.setTitle(" Lets Get In Touch ");
-
-    /* Page subTitle */
     this.pageTitleService.setSubTitle(" Our latest news and learning articles. ");
 
     this.service.getContactContent().

@@ -7,20 +7,32 @@
       <div class="form-row">
          <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6 mb-4">
             <label class="mb-3" for="first-name">First Name</label>
-            <input id="first-name" type="text" class="form-control" placeholder="" formControlName = "first_name" required>
+            <input id="first-name" type="text" class="form-control" placeholder="" formControlName = "first_name" required
+                   [ngClass]="hasError('first_name')?'is-invalid':''">
+           <span class="text-danger" *ngIf="checkFieldWithErrorType('first_name', 'required')" >First Name is required</span>
          </div>
          <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6 mb-4">
             <label class="mb-3" for="last-name">Last Name</label>
-            <input id="last-name" type="text" class="form-control" placeholder="" formControlName = "last_name" required>
+            <input id="last-name" type="text" class="form-control" placeholder="" formControlName = "last_name" required
+                   [ngClass]="hasError('last_name')?'is-invalid':''">
+           <span class="text-danger" *ngIf="checkFieldWithErrorType('last_name', 'required')" >Last Name is required</span>
+
          </div>
       </div>
       <div class="form-group mb-4">
          <label class="mb-3" for="email-address">Email</label>
-         <input id="email-address" type="email" class="form-control" placeholder="" formControlName = "email" required>
+         <input id="email-address" type="email" class="form-control" placeholder="" formControlName = "email" required
+                [ngClass]="hasError('email')?'is-invalid':''">
+        <span class="text-danger" *ngIf="checkFieldWithErrorType('email', 'email')" >Email is not valid</span>
+        <span class="text-danger" *ngIf="checkFieldWithErrorType('email')" >Email is required</span>
       </div>
       <div class="form-group mb-5">
          <label class="mb-3" for="message">Messages</label>
-         <textarea id="message" class="form-control" rows="5" placeholder="" formControlName = "textarea" required></textarea>
+         <textarea id="message" class="form-control" rows="5" placeholder="" formControlName = "message" required
+                   [ngClass]="hasError('message')?'is-invalid':''"
+         ></textarea>
+        <span class="text-danger" *ngIf="checkFieldWithErrorType('message', 'required')" >Message  is required</span>
+
       </div>
       <div class="form-group">
          <button type="submit" class="btn btn-dark btn-chk-dark inverse">Send Messages</button>
