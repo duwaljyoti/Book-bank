@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #F9FBFF !important;
+}
+
+.primary-text {
+    color: #3a8df0 !important;
+}
+
+.ng5-slider .ng5-slider-pointer {
+    background-color: #3a8df0 !important;
+}
+
+.ng5-slider .ng5-slider-bubble {
+    font-size: 22px !important;
+}
+
+.ng5-slider .ng5-slider-bubble:after {
+    content: '%';
+}
