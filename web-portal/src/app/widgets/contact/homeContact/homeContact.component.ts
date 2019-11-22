@@ -3,6 +3,7 @@
  * Used in another component.
  */
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: '[angly-homeContact]',
@@ -12,12 +13,16 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class HomeContactComponent implements OnInit {
 
    @Input() contact : any;
-   lat: number = 30.67995;
-	lng: number = 76.72211;
+  address ='Insight workshop Nepal';
+  mapURL: any;
 
-   constructor() { }
+  constructor(public sanitizer: DomSanitizer) { }
 
    ngOnInit() {
+     this.mapURL = encodeURI('https://maps.google.com/maps?q=' +
+       this.address +
+       '&t=&z=17&ie=UTF8&iwloc=&output=embed');
+     this.mapURL = this.sanitizer.bypassSecurityTrustResourceUrl(this.mapURL);
    }
 
 }

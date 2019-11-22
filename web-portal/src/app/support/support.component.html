@@ -6,19 +6,6 @@
       </div>
    </div>
 </div>
-<!-- Support topics -->
-<div class="support-ques mb-5">
-   <div class="container" *ngIf="supportContent?.support_topics">
-      <div class="row">
-         <div class="col-sm-12 col-md-4 mb-3" *ngFor="let support of supportContent?.support_topics">
-            <h5 class="mb-4"> {{support?.heading}}</h5>
-            <div *ngFor="let content of support?.content">
-               <p class="font-sm"><a href="javascript:void(0)"> {{content}} </a></p>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
 <!-- Suppots cards -->
 <div class="support-card mb-5">
    <div class="container" *ngIf="supportContent?.supports">

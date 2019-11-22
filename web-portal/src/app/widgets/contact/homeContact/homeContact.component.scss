@@ -1,4 +1,13 @@
-agm-map {
-  width: 800px;
-  height: 450px;
+.mapouter {
+  position: relative;
+  text-align: right;
+  height: 600px;
+  width: 100%;
+}
+
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+  height: 600px;
+  width: 100%;
 }
