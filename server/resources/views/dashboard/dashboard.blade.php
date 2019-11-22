@@ -25,7 +25,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div class="row">
+                    {{--<div class="row">
                         <div class="col-md-10">
                             <div class="box box-info">
                                 <div class="box-header with-border">
@@ -34,6 +34,70 @@
 
                                 </div>
                             </div>
+                        </div>--}}
+                        <div class="row">
+                            <div class="col-lg-3 col-xs-6">
+                                <!-- small box -->
+                                <div class="small-box bg-aqua">
+                                    <div class="inner">
+                                        <h3>{{$books_count}}</h3>
+
+                                        <p>Books</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-ios-book"></i>
+                                    </div>
+                                    <a href="{{url('admin/books')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-lg-3 col-xs-6">
+                                <!-- small box -->
+                                <div class="small-box bg-yellow">
+                                    <div class="inner">
+                                        <h3>{{$user_count}}</h3>
+
+                                        <p>User Registrations</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person-add"></i>
+                                    </div>
+                                    <a href="{{url('admin/users')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+
+                            <!-- ./col -->
+                            <div class="col-lg-3 col-xs-6">
+                                <!-- small box -->
+                                <div class="small-box bg-green">
+                                    <div class="inner">
+                                        <h3>{{$personal_request_count}}</h3>
+
+                                        <p>Personal Requests</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-chatbox"></i>
+                                    </div>
+                                    <a href="{{url('admin/personal_requests')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+
+                            <!-- ./col -->
+                            <div class="col-lg-3 col-xs-6">
+                                <!-- small box -->
+                                <div class="small-box bg-red">
+                                    <div class="inner">
+                                        <h3>{{$mass_request_count}}</h3>
+
+                                        <p>Mass Requests</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-chatboxes"></i>
+                                    </div>
+                                    <a href="{{url('admin/mass_requests')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <!-- ./col -->
                         </div>
                     </div>
 
