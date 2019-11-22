@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('book-list','API\BookListController@bookListApi')->name('get_book_name');
+Route::get('category','API\CategoryController@CategoryApi')->name('get_category');
