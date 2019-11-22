@@ -38,8 +38,8 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware'=>'auth'], func
     Route::get('books', 'BookController@index');
     Route::get('users', 'UserController@index');
 
-    Route::get('mass_requests', 'BookController@massRequests');
-    Route::get('personal_requests', 'BookController@personalRequests');
+    Route::get('mass_requests', 'RequestController@massRequests');
+    Route::get('personal_requests', 'RequestController@personalRequests');
     Route::get('dashboard','DashboardController@index')->name('dashboard');
 });
 

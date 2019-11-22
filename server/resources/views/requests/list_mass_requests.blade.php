@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-    {{--Title Here--}} Books Lists
+    Mass Requests
 @stop
 
 @section('header_styles')
@@ -11,11 +11,11 @@
 @section('content')
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Book Lists</h1>
+            <h1>Mass Request For Books</h1>
             <ol class="breadcrumb">
                 <li><a href=""><i class="fa fa-dashboard"></i> Home</a></li>
                 <li><a href="">Books</a></li>
-                <li class="active">All Lists</li>
+                <li class="active">Mass Requests</li>
             </ol>
         </section>
     <!-- Main content -->
@@ -26,7 +26,7 @@
 
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">List of all Books</h3>
+                            <h3 class="box-title">List of All Mass Request For Books</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -34,13 +34,11 @@
                                 <thead>
                                 <tr>
                                     <th>S.N.</th>
-                                    <th>Name</th>
-                                    <th>Author</th>
-                                    <th>Publication</th>
-                                    <th>Rent</th>
-                                    <th>Request</th>
-                                    <th>Category</th>
-                                    <th>User</th>
+                                    <th>Book Name</th>
+                                    <th>Number of Books</th>
+                                    <th>Name of Organization</th>
+                                    <th>Pan Number</th>
+                                    <th>Reason</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -49,24 +47,10 @@
                                     <tr>
                                         <td>{{++$index}}</td>
                                         <td>{{$book->name}}</td>
-                                        <td>{{$book->author}}</td>
-                                        <td>{{$book->publication}}</td>
-                                        <td>
-                                            @if($book->is_request)
-                                                <span class="label label-success">Yes</span>
-                                            @else
-                                                <span class="label label-danger">No</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if($book->is_for_rent)
-                                                <span class="label label-success">Yes</span>
-                                            @else
-                                                <span class="label label-danger">No</span>
-                                            @endif
-                                        </td>
-                                        <td>{{$book->category}}</td>
-                                        <td>{{$book->user}}</td>
+                                        <td>{{$book->number_of_books}}</td>
+                                        <td>{{$book->organization_name}}</td>
+                                        <td>{{$book->pan_no}}</td>
+                                        <td>{{$book->reason}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
