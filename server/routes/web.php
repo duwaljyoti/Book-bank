@@ -41,6 +41,8 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware'=>'auth'], func
     Route::get('mass_requests', 'RequestController@massRequests');
     Route::get('personal_requests', 'RequestController@personalRequests');
     Route::get('dashboard','DashboardController@index')->name('dashboard');
+
+    Route::resource('books','BookController');
 });
 
 
