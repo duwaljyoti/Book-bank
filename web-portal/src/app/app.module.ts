@@ -36,6 +36,7 @@ import { SupportComponent } from './support/support.component';
 import { sidebarWidgetsComponent } from './sidebarWidgets/sidebarWidgets.component';
 import {ApiUrlInterceptor} from './shared/api-url-interceptor';
 import {ToastrModule} from 'ngx-toastr';
+import {RequestBookComponent} from "./request-book/request-book.component";
 
 @NgModule({
    declarations: [
@@ -52,6 +53,7 @@ import {ToastrModule} from 'ngx-toastr';
       SearchComponent,
       SupportComponent,
       sidebarWidgetsComponent,
+      RequestBookComponent
    ],
    imports: [
       BrowserModule,
