@@ -25,11 +25,17 @@ export class HomeComponent implements OnInit {
   mobileFeatured: any;
   testimonial: any;
 
+  productlist: any;
+  categories: any;
+  popularPosts: any;
+  productsList: any;
+
+
   constructor(private pageTitleService: PageTitleService, private service: ChkService,
               private route: Router, private toastr: ToastrService) {
-    this.pageTitleService.setTitle(" Be a Design Hero ");
+    this.pageTitleService.setTitle("Excited to rent or borrow book");
     /* Page subTitle */
-    this.pageTitleService.setSubTitle(" Our latest news and learning articles. ");
+    this.pageTitleService.setSubTitle("Let's get started!");
     this.service.getHomeContent().subscribe(response => {
         this.homeContent = response;
       },
@@ -85,6 +91,26 @@ export class HomeComponent implements OnInit {
       },
       err => console.log(err),
       () => this.testimonial
+    );
+
+    this.service.getcategories().subscribe(response => {
+        this.categories = response;
+      },
+      err => console.log(err),
+      () => this.categories
+    );
+    this.service.getPopularPosts().subscribe(response => {
+        this.popularPosts = response;
+      },
+      err => console.log(err),
+      () => this.popularPosts
+    );
+
+    this.service.getProductsList().subscribe(response => {
+        this.productsList = response;
+      },
+      err => console.log(err),
+      () => this.productsList
     );
   }
 
