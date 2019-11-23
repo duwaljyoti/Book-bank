@@ -31,14 +31,15 @@
 			</div>
 			<div class="col-sm-12 col-md-6">
 				<div class="mb-3">
-					<h2 class="text-capitalize font-3x mb-3">Fleece Jacket</h2>
+					<h2 class="text-capitalize font-3x mb-3">{{ bookDetail?.name }}</h2>
 					<h4 class="font-26 text-primary">$125.00</h4>
 				</div>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis eros lobortis, vestibulum turpis ac, pulvinar odio. Praesent vulputate a elit ac mollis. In sit amet ipsum turpis. Pellentesque venenatis, libero vel euismod lobortis, mi metus luctus augue, eget dapibus elit nisi eu massa. Phasellus sollicitudin nisl posuere nibh ultricies.</p>
+        <p>{{ bookDetail?.description }}</p>
 				<div class="d-flex justify-content-between">
-					<div class="align-content-start">
-						<a routerLink="/product-cart" class="btn btn-primary btn-lg btn-block">Get this Book</a>
-					</div>
+          <div class="align-content-start">
+            <button class="btn btn-primary" (click)="rent(bookDetail.id)">Rent</button> &nbsp; &nbsp; &nbsp;
+            <button class="btn btn-primary" (click)="acquire(bookDetail.id)">Acquire</button>
+          </div>
 				</div>
 			</div>
 		</div><!-- row closed -->

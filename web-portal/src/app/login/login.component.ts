@@ -4,6 +4,7 @@ import { SocialLoginModule, AuthServiceConfig } from 'angular-6-social-login';
 import { Socialusers } from '../socialusers';
 import { SocialLoginService } from '../social-login.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import {HttpClient} from '@angular/common/http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,11 +13,14 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 export class LoginComponent implements OnInit {
   response;
   socialusers = new Socialusers();
+  isLoggedIn = false;
   constructor(
     public OAuth: AuthService,
     private SocialloginService: SocialLoginService,
-    private router: Router
+    private router: Router,
+    private httpClient: HttpClient
   ) { }
+
   ngOnInit() {
   }
 
@@ -30,21 +34,27 @@ export class LoginComponent implements OnInit {
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     }
     this.OAuth.signIn(socialPlatformProvider).then(socialusers => {
-      console.log(socialProvider, socialusers);
-      console.log(socialusers);
       this.Savesresponse(socialusers);
     });
   }
+
+  findUserApi = (userEmail) => {
+    return this.httpClient.get<Response>(`/api/users?email=${userEmail}`);
+  }
+
   Savesresponse(socialusers: Socialusers) {
-    console.log(12121, socialusers);
-    // this.SocialloginService.Savesresponse(socialusers).subscribe((res: any) => {
-    //   debugger;
-    //   console.log(res);
-    //   this.socialusers=res;
-    //   this.response = res.userDetail;
-    //   localStorage.setItem('socialusers', JSON.stringify( this.socialusers));
-    //   console.log(localStorage.setItem('socialusers', JSON.stringify(this.socialusers)));
-    //   this.router.navigate([`/Dashboard`]);
-    // })
+    console.log('saves response');
+    this.isLoggedIn = true;
+    this.findUserApi(socialusers.email).subscribe(result => {
+      // @ts-ignore
+      localStorage.setItem('logged_in_user_id', result.data.id);
+      localStorage.setItem('logged_in_user_email', socialusers.email);
+      localStorage.setItem('loggedIn', 'true');
+    });
+  }
+
+  logOut() {
+    this.isLoggedIn = false;
+    localStorage.removeItem('logged_in_user_email');
   }
 }

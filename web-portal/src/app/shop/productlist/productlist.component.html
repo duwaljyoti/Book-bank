@@ -143,7 +143,7 @@
 								<div class="cart-icon">
 									<ul class="list-unstyled">
 										<li>
-											<a routerLink="/product-detail" class="square-40 bg-white rounded-circle text-dark mb-2 card-shadow">
+											<a  class="square-40 bg-white rounded-circle text-dark mb-2 card-shadow">
 												<i class="fa fa-heart text-danger"></i>
 											</a>
 										</li>
@@ -151,7 +151,9 @@
 								</div>
 							</div>
 							<div class="card-body p-0">
-								<h5 class="text-capitalize mb-3">{{book.name}}</h5>
+                <a [routerLink]="'/product-detail/' + book.id">
+                  <h5 class="text-capitalize mb-3">{{book.name}}</h5>
+                </a>
               </div>
               <button *ngIf="book.is_for_rent" type="button" class="btn btn-primary btn-xs">Rent</button>
               <button *ngIf="!book.is_for_rent" type="button" class="btn btn-primary btn-xs">Borrow</button>
