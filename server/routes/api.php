@@ -21,6 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::post('book', 'API\BookController@create')->name('book_create');
     Route::post('request', 'API\RequestController@create')->name('request_create');
     Route::post('borrow/rent', 'API\BookController@borrowCreate');
+    Route::post('{id}/acquired', 'API\BookController@acquire');
 /*});*/
 
 Route::get('book/{id}','API\BookController@find')->name('book_detail');
