@@ -47,7 +47,7 @@ export class RentRequestComponent implements OnInit {
         }
       },
       err => {
-        this.toastr.error(err['error']['message']);
+        this.toastr.error(err.error);
       },
       () => {}
     );
@@ -73,7 +73,7 @@ export class RentRequestComponent implements OnInit {
           }
         },
         err => {
-          this.toastr.error(err['error']['message']);
+          this.toastr.error(err.error);
         },
         () => {}
       );
