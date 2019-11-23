@@ -121,6 +121,13 @@ class BookController extends Controller
 
     }
 
+    public function acquired ($id)
+    {
+        $data['is_acquired'] = 1;
+       $book = Book::whereId($id)->update($data);
+       return $book;
+    }
+
     public function isBookRentedAcquired(Request $request){
         $is_acquirable = $is_rentable = false;
         $message = '';

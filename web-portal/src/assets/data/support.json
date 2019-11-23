@@ -32,42 +32,27 @@
     "supports":[
       {
         "heading":"Can't find what you need?",
-        "content":"Potenti elit lectus augue eget iaculis vitae etiam, ullamcorper etiam bibendum ad feugiat magna accumsan dolor, nibh molestie cras hac ac ad massa",
+        "content":"Contact Us using the contact form",
         "image_path":"./assets/img/ticket.png",
-        "button_content":"Submit Ticket"
+        "button_content":"Contact Us"
       },
       {
         "heading":"Ask the community",
-        "content":"Potenti elit lectus augue eget iaculis vitae etiam, ullamcorper etiam bibendum ad feugiat magna accumsan dolor, nibh molestie cras hac ac ad massa",
+        "content":"Ask the community",
         "image_path":"./assets/img/community.png",
         "button_content":"Go To community"
       }
     ],
     "support_questions":[
       {
-        "question":"Do you have any built-in caching?",
-        "answer":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-        "collapse_id":"one"
-      },
-      {
-        "question":"Can I add/upgrade my plan at any time?",
-        "answer":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-        "collapse_id":"two"
-      },
-      {
-        "question":"What access comes with my hosting plan?",
-        "answer":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-        "collapse_id":"three"
-      },
-      {
-        "question":"Can I add/upgrade my plan at any time?",
-        "answer":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-        "collapse_id":"four"
-      },
-      {
-        "question":"Do you have any built-in caching?",
-        "answer":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "question":"Do I have to pay the fee for the book request ",
+        "answer":"No, You don't have to pay any fee.",
         "collapse_id":"five"
+      },
+      {
+        "question":"I have a question",
+        "answer":"Please send a message to us.",
+        "collapse_id":"six"
       }
     ]
   }

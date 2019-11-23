@@ -342,5 +342,5 @@ export class ChkService {
     return this.http.post<Response>('/borrow-book-submite', data);
   }
 
-  getBooks = () => this.http.get<Response>('/api/books');
+  getBooks = () => this.http.get<Response>('/books');
 }

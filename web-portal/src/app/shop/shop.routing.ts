@@ -15,13 +15,7 @@ export const ShopRoutes: Routes = [{
     path: 'product-cart',
     component: ProductCartComponent
   },{
-    path: 'product-list',
-    component: ProductlistComponent
-  },{
     path: 'product-checkout',
     component: ProductCheckoutComponent
-  },{
-    path: 'product-detail/:bookId',
-    component: ProductDetailComponent
   }]
 }];

@@ -9,8 +9,6 @@ import { WidgetsModule } from '../widgets/widgets.module';
 
 import { ProductCartComponent } from './productCart/productCart.component';
 import { ProductCheckoutComponent } from './productCheckout/productCheckout.component';
-import { ProductDetailComponent } from './productDetail/productDetail.component';
-import { ProductlistComponent } from './productlist/productlist.component';
 import {Ng5SliderModule} from 'ng5-slider';
 import {DisqusModule} from 'ngx-disqus';
 
@@ -26,9 +24,7 @@ import {DisqusModule} from 'ngx-disqus';
   ],
   declarations: [
   	ProductCartComponent,
-  	ProductCheckoutComponent,
-  	ProductDetailComponent,
-  	ProductlistComponent,
+  	ProductCheckoutComponent, ,
   ]
 })
 

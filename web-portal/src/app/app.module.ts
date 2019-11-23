@@ -44,6 +44,8 @@ import { MassRequestComponent } from './mass-request/mass-request.component';
 import {PersonalRequestComponent} from "./personal-request/personal-request.component";
 import {TokenInterceptor} from "./shared/token.interceptor";
 import {RentRequestComponent} from "./rent-request/rent-request.component";
+import {ProductlistComponent} from "./shop/productlist/productlist.component";
+import {ProductDetailComponent} from "./shop/productDetail/productDetail.component";
 
 
 export function socialConfigs() {
@@ -79,7 +81,9 @@ export function socialConfigs() {
       LoginComponent,
       MassRequestComponent,
      PersonalRequestComponent,
-     RentRequestComponent
+     RentRequestComponent,
+     ProductlistComponent,
+     ProductDetailComponent
    ],
    imports: [
       BrowserModule,
