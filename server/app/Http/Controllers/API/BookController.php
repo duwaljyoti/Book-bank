@@ -62,7 +62,6 @@ class BookController extends Controller
         }
 
         $attributes = $request->all();
-        $filename = str_random(5).$request->file('image')->getClientOriginalName();
         $attributes['image'] = $filename;
 
         return $this->commonService->save($this->book, $attributes);
