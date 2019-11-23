@@ -38,18 +38,19 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  findUserApi = (userEmail) => {
-    return this.httpClient.get<Response>(`/api/users?email=${userEmail}`);
+  findUserApi = (user) => {
+    return this.httpClient.get<Response>(`/users?email=${user.email}&name=${user.name}`);
+
   }
 
   Savesresponse(socialusers: Socialusers) {
-    console.log('saves response');
     this.isLoggedIn = true;
-    this.findUserApi(socialusers.email).subscribe(result => {
+    this.findUserApi(socialusers).subscribe(result => {
       // @ts-ignore
       localStorage.setItem('logged_in_user_id', result.data.id);
       localStorage.setItem('logged_in_user_email', socialusers.email);
       localStorage.setItem('loggedIn', 'true');
+      this.router.navigate(['/home']);
     });
   }
 
