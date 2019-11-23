@@ -14,6 +14,7 @@ import {ContactComponent} from "./contact/contact.component";
 import {RequestBookComponent} from "./request-book/request-book.component";
 import {MassRequestComponent} from "./mass-request/mass-request.component";
 import {PersonalRequestComponent} from "./personal-request/personal-request.component";
+import {RentRequestComponent} from "./rent-request/rent-request.component";
 
 export const AppRoutes: Routes = [{
   path: '',
@@ -28,6 +29,10 @@ export const AppRoutes: Routes = [{
     }, {
       path: 'request-book',
       component: RequestBookComponent
+    },
+    {
+      path: 'borrow-book',
+      component: RentRequestComponent
     },
     {
       path: 'mass-request',

@@ -337,4 +337,8 @@ export class ChkService {
   getCategories() {
     return this.http.get<Response>('/categories');
   }
+
+  submitBorrowBook(data) {
+    return this.http.post<Response>('/borrow-book-submite', data);
+  }
 }

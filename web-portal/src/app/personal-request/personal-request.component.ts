@@ -63,10 +63,8 @@ export class PersonalRequestComponent implements OnInit {
       let data = this.requestBook.value;
       data.requested_by = localStorage.getItem('api_token');
       data.is_mass = 0;
-      console.log(data);
-      return false;
       this.service.submitMassRequest(data).subscribe(response => {
-          if (response['status'] === 1) {
+          if (response['status'] == 1) {
             this.toastr.show('successfully uploaded');
           }else{
             this.toastr.error('successfully uploaded');
