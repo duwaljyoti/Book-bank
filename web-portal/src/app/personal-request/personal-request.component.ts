@@ -62,7 +62,7 @@ export class PersonalRequestComponent implements OnInit {
     {
       let data = this.requestBook.value;
       data.requested={
-        'requested_by' : 1,
+        'requested_by' : localStorage.getItem('logged_in_user_id'),
         'reason' : this.requestBook.value.reason,
         'is_mass' : 1,
       }
