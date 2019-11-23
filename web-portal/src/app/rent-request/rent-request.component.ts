@@ -5,12 +5,13 @@ import {ChkService} from "../service/chk.service";
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
-  selector: 'app-mass-request',
-  templateUrl: './mass-request.component.html',
-  styleUrls: ['./mass-request.component.css']
+  selector: 'app-personal-request',
+  templateUrl: './rent-request.component.html',
+  styleUrls: ['./rent-request.component.css']
 })
-export class MassRequestComponent implements OnInit {
+export class RentRequestComponent implements OnInit {
 
+  fileToUpload: any;
   requestBook : FormGroup;
   isSubmitted = false;
 
@@ -29,13 +30,11 @@ export class MassRequestComponent implements OnInit {
 
     this.requestBook = this.formBuilder.group({
       name : [null, [Validators.required] ],
-      number_of_books  : [null, [Validators.required] ],
-      pan_no      : [null, [Validators.required] ],
-      reason   : [null, [Validators.required] ],
-      publication   : [null, [] ],
-      organization_name   : [null, [Validators.required] ],
-      category_id   : [null, [Validators.required] ],
       author   : [null, [Validators.required] ],
+      publication   : [null, [] ],
+      description   : [null, [Validators.required] ],
+      category_id   : [null, [Validators.required] ],
+      image:[null,[]]
     });
   }
 
@@ -64,13 +63,13 @@ export class MassRequestComponent implements OnInit {
     {
       let data = this.requestBook.value;
       data.requested_by = localStorage.getItem('api_token');
-      data.is_mass = 1;
-      this.service.submitMassRequest(data).subscribe(response => {
+      data.is_for_rent = 1;
+      data.image = this.fileToUpload;
+      this.service.submitBorrowBook(data).subscribe(response => {
           if (response['status'] == 1) {
             this.toastr.show('successfully uploaded');
           }else{
             this.toastr.error('successfully uploaded');
-
           }
         },
         err => {
@@ -80,6 +79,10 @@ export class MassRequestComponent implements OnInit {
       );
 
     }
+  }
+
+  handleFileInput(files: FileList) {
+    this.fileToUpload = files.item(0);
   }
 
   hasError(control) {

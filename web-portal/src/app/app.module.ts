@@ -43,6 +43,7 @@ import { LoginComponent } from './login/login.component';
 import { MassRequestComponent } from './mass-request/mass-request.component';
 import {PersonalRequestComponent} from "./personal-request/personal-request.component";
 import {TokenInterceptor} from "./shared/token.interceptor";
+import {RentRequestComponent} from "./rent-request/rent-request.component";
 
 
 export function socialConfigs() {
@@ -78,6 +79,7 @@ export function socialConfigs() {
       LoginComponent,
       MassRequestComponent,
      PersonalRequestComponent,
+     RentRequestComponent
    ],
    imports: [
       BrowserModule,
