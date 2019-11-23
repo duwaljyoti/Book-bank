@@ -120,6 +120,13 @@ class BookController extends Controller
 
     }
 
+    public function acquired ($id)
+    {
+        $data['is_acquired'] = 1;
+       $book = Book::whereId($id)->update($data);
+       return $book;
+    }
+
     public function isBookRented(Request $request){
         $book_id = $request->get('book_id');
         $book_rented = Rent::where('book_id',$book_id)
