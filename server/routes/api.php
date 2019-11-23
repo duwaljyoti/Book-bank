@@ -38,4 +38,4 @@ Route::post('users', 'API\UserController@create')->name('user_create');
 Route::get('users', 'API\UserController@userDetailsByEmail')
     ->name('user_details');
 
-Route::get('books/{book_id}', 'API\BookController@isBookRented')->name('is_book_rented');
+Route::get('book_status/{book_id}', 'API\BookController@isBookRentedAcquired')->name('is_book_rented_acquired');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Services\CommonService;
 use App\Models\Book;
 use App\Models\Rent;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -120,23 +121,31 @@ class BookController extends Controller
 
     }
 
-    public function isBookRented(Request $request){
-        $book_id = $request->get('book_id');
-        $book_rented = Rent::where('book_id',$book_id)
-            ->where('due_date', '>', Carbon::now())
-            ->first();
-        if(count($book_rented)>0){
-            $rented = 1;
-        }else $rented = 0;
+    public function isBookRentedAcquired(Request $request){
+        $is_acquirable = $is_rentable = false;
+        $message = '';
 
+        $book_id = $request->book_id;
+        $book = Book::where('id',$book_id)->first();
+        $book_rent = Rent::where('book_id',$book_id)->first();
 
-        if(count($book_rented)<0){
-            $book_acquired = Book::where('id',$book_id)->where('is_acquired',1)->get();
-            if($book_acquired){
-                $acquired = 1;
-            } else $acquired = 0;
+        if($book->is_for_rent == 0 && $book->is_acquired == 0){
+            $is_rentable = false;
+            $is_acquirable = true;
         }
-        return response()->json(['status'=>'1','message'=>'Success','rented'=>$rented, 'acquired'=>$acquired])->setStatusCode(200);
+        else if($book->is_for_rent == 0 && $book->is_acquired == 1){
+            $is_rentable = false;
+            $is_acquirable = false;
+        }
+        else if($book->is_for_rent == 1 && $book_rent){
+            $user = User::find($book_rent->rented_by);
+            $message = "This book has been rented by".$user->name;
+        }
+        else if($book->is_for_rent ==1 && !$book_rent){
+            $is_rentable = true;
+        }
+
+        return response()->json(['status'=>'1','message'=>'Success','is_rentable'=>$is_rentable, 'is_acquirable'=>$is_acquirable, 'message'=>$message])->setStatusCode(200);
     }
 
 }
