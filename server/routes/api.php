@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware'=>'authenticate_token'], function(){
     Route::post('book', 'API\BookController@create')->name('book_create');
     Route::post('request', 'API\RequestController@create')->name('request_create');
+    Route::post('borrow/rent', 'API\BookController@borrowCreate');
 });
 
 Route::get('book/{id}','API\BookController@find')->name('book_detail');
@@ -32,3 +33,7 @@ Route::get('user/{user_id}/other-books/{book_id}', 'API\BookController@otherBook
 
 
 Route::get('request-book','API\RequestController@bookRequest')->name('get_book_request');
+
+Route::post('users', 'API\UserController@create')->name('user_create');
+Route::get('users', 'API\UserController@userDetailsByEmail')
+    ->name('user_details');
