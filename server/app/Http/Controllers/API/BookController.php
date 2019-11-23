@@ -51,6 +51,11 @@ class BookController extends Controller
                 "name" =>$book->name,
                 "author" =>$book->author,
                 "publication" => $book->publication,
+                "description" => $book->description,
+                "is_request" => $book->is_request,
+                "is_for_rent" =>$book->is_for_rent,
+                "category_id" =>$book->category_id,
+                "image" =>$book->image,
             ];
         }
 
