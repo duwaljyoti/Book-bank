@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,6 +17,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('book-list','API\BookListController@bookListApi')->name('get_book_name');
+Route::group(['middleware'=>'authenticate_token'], function(){
+    Route::post('book', 'API\BookController@create')->name('book_create');
+});
+
+
+Route::get('book-list','API\BookController@bookListApi')->name('get_book_name');
 Route::get('category','API\CategoryController@CategoryApi')->name('get_category');
+Route::get('user/{user_id}/other-books/{book_id}', 'API\BookController@otherBookList')
+    ->name('other_book_list');
+
+
 Route::get('request-book','API\RequestController@bookRequest')->name('get_book_request');

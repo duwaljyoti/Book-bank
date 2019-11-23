@@ -36,6 +36,7 @@
                                     <th>S.N.</th>
                                     <th>Book Name</th>
                                     <th>Number of Books</th>
+                                    <th>Requested_by</th>
                                     <th>Name of Organization</th>
                                     <th>Pan Number</th>
                                     <th>Reason</th>
@@ -46,8 +47,9 @@
                                 @foreach($books as $index=>$book)
                                     <tr>
                                         <td>{{++$index}}</td>
-                                        <td>{{$book->name}}</td>
+                                        <td>{{$book->book_name}}</td>
                                         <td>{{$book->number_of_books}}</td>
+                                        <td>{{$book->user_name}}</td>
                                         <td>{{$book->organization_name}}</td>
                                         <td>{{$book->pan_no}}</td>
                                         <td>{{$book->reason}}</td>

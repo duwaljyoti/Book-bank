@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
 use Illuminate\Http\Request;
@@ -42,5 +43,34 @@ class LoginController extends Controller
     public function logout(Request $request) {
         Auth::logout();
         return redirect('/admin/login');
+    }
+
+    public function login(Request $request)
+    {
+        $email = $request->email;
+
+        try{
+            if($user = User::whereEmail($email)->exists()){
+                $user->api_token = str_random(60);
+                $user->save();
+            }else{
+                $data = $request->only(['email','name']);
+                $user = User::create($data);
+                $user->api_token = str_random(60);
+                $user->save();
+            }
+            $message = 'Successfully logged in';
+
+        }catch (\Exception $e){
+            $user = [];
+            $message = $e->getMessage();
+        }
+
+
+        return response([
+            'status'=>1,
+            'data'=>$user,
+            'message4'=>$message
+        ]);
     }
 }

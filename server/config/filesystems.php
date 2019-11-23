@@ -55,6 +55,12 @@ return [
             'visibility' => 'public',
         ],
 
+        'book_images' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/book_images'),
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
