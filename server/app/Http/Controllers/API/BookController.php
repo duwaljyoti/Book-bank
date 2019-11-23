@@ -36,11 +36,18 @@ class BookController extends Controller
             $categories = explode(',',$request->category);
             $booksQuery->orWhereIn('categories.id',$categories);
         }
+        if($request->has('price_range')){
+            $price_range = explode(',',$request->price_range);
+            $min_price = $price_range[0];
+            $max_price = $price_range[1];
+            $book = $booksQuery->orwhere('books.price','>=',$min_price)
+                ->where('books.price','<=',$max_price);
+        }
 
         $books = $booksQuery->get();
         $book_list['status'] = '1';
         $book_list['message'] = 'Success';
-        return response()->json(['status'=>'1','message'=>'Success',$books])->setStatusCode(200);
+        return response()->json(['status'=>'1','message'=>'Success','data'=>$books])->setStatusCode(200);
     }
     public function create(Request $request)
     {

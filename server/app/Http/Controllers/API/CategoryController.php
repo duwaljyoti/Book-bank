@@ -21,6 +21,7 @@ class CategoryController extends Controller
         foreach($categories as $key=>$category){
             $category_list['data'] [] = [
                 "name" =>$category->name,
+                "value" =>$category->id,
             ];
         }
 

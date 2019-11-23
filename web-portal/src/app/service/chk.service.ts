@@ -329,23 +329,12 @@ export class ChkService {
       return this.http.get<Response>("assets/data/related-products.json").pipe(map(response => response.data));
    }
 
-  /*
-  * Get code information based on code
-  */
 
-  getCodeInformation(code) {
-    return this.http.get<Response>('/get-code-information/' + code);
+  submitMassRequest(data) {
+    return this.http.post<Response>('/mass-request', data);
   }
 
-  uploadDocument(data) {
-    return this.http.post<Response>('/document-upload ', data);
-  }
-
-  updateCurrentRate(data) {
-    return this.http.post<Response>('/update-current-rate ', data);
-  }
-
-  checkforUserCredentialsValidity(data) {
-    return this.http.post<Response>('/check-for-user-credentials-validity ', data);
+  getCategories() {
+    return this.http.get<Response>('/categories');
   }
 }

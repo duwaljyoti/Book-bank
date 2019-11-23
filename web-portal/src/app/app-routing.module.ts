@@ -13,6 +13,7 @@ import {LoginComponent} from './login/login.component';
 import {ContactComponent} from "./contact/contact.component";
 import {RequestBookComponent} from "./request-book/request-book.component";
 import {MassRequestComponent} from "./mass-request/mass-request.component";
+import {PersonalRequestComponent} from "./personal-request/personal-request.component";
 
 export const AppRoutes: Routes = [{
   path: '',
@@ -31,6 +32,10 @@ export const AppRoutes: Routes = [{
     {
       path: 'mass-request',
       component: MassRequestComponent
+    },
+    {
+      path: 'personal-request',
+      component: PersonalRequestComponent
     },
     {
       path: 'about',

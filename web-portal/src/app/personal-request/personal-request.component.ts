@@ -5,11 +5,11 @@ import {ChkService} from "../service/chk.service";
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
-  selector: 'app-mass-request',
-  templateUrl: './mass-request.component.html',
-  styleUrls: ['./mass-request.component.css']
+  selector: 'app-personal-request',
+  templateUrl: './personal-request.component.html',
+  styleUrls: ['./personal-request.component.css']
 })
-export class MassRequestComponent implements OnInit {
+export class PersonalRequestComponent implements OnInit {
 
   requestBook : FormGroup;
   isSubmitted = false;
@@ -29,13 +29,11 @@ export class MassRequestComponent implements OnInit {
 
     this.requestBook = this.formBuilder.group({
       name : [null, [Validators.required] ],
-      number_of_books  : [null, [Validators.required] ],
-      pan_no      : [null, [Validators.required] ],
       reason   : [null, [Validators.required] ],
       publication   : [null, [] ],
-      organization_name   : [null, [Validators.required] ],
       category_id   : [null, [Validators.required] ],
       author   : [null, [Validators.required] ],
+
     });
   }
 
@@ -64,7 +62,9 @@ export class MassRequestComponent implements OnInit {
     {
       let data = this.requestBook.value;
       data.requested_by = localStorage.getItem('api_token');
-      data.is_mass = 1;
+      data.is_mass = 0;
+      console.log(data);
+      return false;
       this.service.submitMassRequest(data).subscribe(response => {
           if (response['status'] === 1) {
             this.toastr.show('successfully uploaded');
