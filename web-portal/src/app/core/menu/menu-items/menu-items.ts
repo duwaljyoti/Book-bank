@@ -39,14 +39,20 @@ const HEADERMENUITEMS = [
       ]
    },
    {
-      state:"",
-      name:"Shop",
-      type:"sub",
-      icon: 'fa fa-caret-down',
-      children: [
-         { state: 'product-list', name:'Product List', type:"link"},
-      ]
+      state:"book-list",
+      name:"Book List",
+      type:"link",
    },
+  {
+    state:"mass-request",
+    name:"Mass Book Request",
+    type:"link",
+  },
+  {
+    state:"personal-request",
+    name:"Personal Book Request",
+    type:"link",
+  },
   {
     name: 'Login',
     type: 'link',
