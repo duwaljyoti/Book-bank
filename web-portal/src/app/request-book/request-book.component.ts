@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { PageTitleService } from '../core/page-title/page-title.service';
-import { ChkService } from '../service/chk.service';
+import {Component, OnInit} from '@angular/core';
+import {PageTitleService} from '../core/page-title/page-title.service';
+import {ChkService} from '../service/chk.service';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({

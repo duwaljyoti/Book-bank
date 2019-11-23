@@ -40,6 +40,7 @@ import {RequestBookComponent} from "./request-book/request-book.component";
 import {AuthService, AuthServiceConfig, GoogleLoginProvider} from 'angular-6-social-login';
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { LoginComponent } from './login/login.component';
+import { MassRequestComponent } from './mass-request/mass-request.component';
 
 
 export function socialConfigs() {
@@ -73,6 +74,7 @@ export function socialConfigs() {
      // remove this loginComponentComponent
       LoginComponentComponent,
       LoginComponent,
+      MassRequestComponent,
    ],
    imports: [
       BrowserModule,

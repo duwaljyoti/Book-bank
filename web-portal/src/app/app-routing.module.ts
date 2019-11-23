@@ -12,6 +12,7 @@ import {sidebarWidgetsComponent} from './sidebarWidgets/sidebarWidgets.component
 import {LoginComponent} from './login/login.component';
 import {ContactComponent} from "./contact/contact.component";
 import {RequestBookComponent} from "./request-book/request-book.component";
+import {MassRequestComponent} from "./mass-request/mass-request.component";
 
 export const AppRoutes: Routes = [{
   path: '',
@@ -28,9 +29,10 @@ export const AppRoutes: Routes = [{
       component: RequestBookComponent
     },
     {
-      path: 'features',
-      component: FeaturesComponent
-    }, {
+      path: 'mass-request',
+      component: MassRequestComponent
+    },
+    {
       path: 'about',
       component: AboutComponent
     },{
