@@ -30,7 +30,9 @@ class UserController extends Controller
     }
 
     public function userDetailsByEmail(Request $request){
-        $userdetails = User::where('email',$request->get('email'))->first();
+        if($request->has('email')) {
+            $userdetails = User::where('email', $request->email)->first();
+        }
         return response()->json(['status'=>'1','message'=>'Success','data'=>$userdetails])->setStatusCode(200);
     }
 

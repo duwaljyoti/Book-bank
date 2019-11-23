@@ -34,5 +34,5 @@ Route::get('request-book','API\RequestController@bookRequest')->name('get_book_r
 //Route::post('filter-book','API\BookListController@filterBook')->name('filter_book_list');
 
 Route::post('users', 'API\UserController@create')->name('user_create');
-Route::get('users/{email}', 'API\UserController@userDetailsByEmail')
+Route::get('users', 'API\UserController@userDetailsByEmail')
     ->name('user_details');
