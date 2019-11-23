@@ -6,6 +6,21 @@
           <form (ngSubmit)="submit(requestBook.value)" [formGroup]="requestBook">
             <div class="form-row">
               <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
+                <label class="" for="organization_name">Organization Name</label>
+                <input [ngClass]="hasError('pan_no')?'is-invalid':''" class="form-control"
+                       formControlName="organization_name" id="organization_name" placeholder="" required type="text">
+                <span *ngIf="checkFieldWithErrorType('organization_name', 'required')"
+                      class="text-danger">Organization_name is required</span>
+              </div>
+              <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
+                <label class="" for="pan_no">Pan Number</label>
+                <input [ngClass]="hasError('pan_no')?'is-invalid':''" class="form-control"
+                       formControlName="pan_no" id="pan_no" placeholder="" required type="text">
+                <span *ngIf="checkFieldWithErrorType('pan_no', 'required')"
+                      class="text-danger">Pan Number is required</span>
+              </div>
+
+              <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
                 <label class="" for="book-name">Book Name</label>
                 <input [ngClass]="hasError('name')?'is-invalid':''" class="form-control"
                        formControlName="name" id="book-name" placeholder="" required type="text">
@@ -13,11 +28,15 @@
                       class="text-danger">Book Name is required</span>
               </div>
               <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="" for="author-name">Pan Number</label>
-                <input [ngClass]="hasError('pan_number')?'is-invalid':''" class="form-control"
-                       formControlName="pan_number" id="author-name" placeholder="" required type="text">
-                <span *ngIf="checkFieldWithErrorType('pan_number', 'required')"
-                      class="text-danger">Pan Number is required</span>
+                <label class="" for="category">Category</label>
+                <select [ngClass]="hasError('category')?'is-invalid':''" class="form-control" class="form-control"
+                        formControlName="category"
+                        id="category" placeholder="" required>
+                  <option *ngFor="let category of categories" value="{{category.value}}">{{category.name}}</option>
+                </select>
+                <span *ngIf="checkFieldWithErrorType('category', 'required')" class="text-danger">
+                Category is not valid
+              </span>
               </div>
               <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
                 <label class="" for="publication-name">Publication Name</label>
@@ -25,10 +44,10 @@
                        formControlName="publication" id="publication-name" placeholder="" required type="text">
               </div>
               <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="" for="number-of-books">Number of books</label>
-                <input [ngClass]="hasError('no_of_books')?'is-invalid':''" class="form-control"
-                       formControlName="no_of_books" id="number-of-books" placeholder="" required type="text">
-                <span *ngIf="checkFieldWithErrorType('no_of_books', 'required')"
+                <label class="" for="number_of_books">Number of books</label>
+                <input [ngClass]="hasError('number_of_books')?'is-invalid':''" class="form-control"
+                       formControlName="number_of_books" id="number_of_books" placeholder="" required type="text">
+                <span *ngIf="checkFieldWithErrorType('number_of_books', 'required')"
                       class="text-danger">Books number is required</span>
               </div>
 

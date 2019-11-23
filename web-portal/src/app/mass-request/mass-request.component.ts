@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PageTitleService} from "../core/page-title/page-title.service";
 import {ChkService} from "../service/chk.service";
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-mass-request',
@@ -12,24 +13,44 @@ export class MassRequestComponent implements OnInit {
 
   requestBook : FormGroup;
   isSubmitted = false;
-  constructor( private formBuilder : FormBuilder, private pageTitleService: PageTitleService, private service:ChkService) {
+
+  categories = [
+  ];
+
+  constructor(private formBuilder: FormBuilder, private pageTitleService: PageTitleService, private service: ChkService,
+              private toastr: ToastrService
+  ) {
 
     /* Page title */
-    this.pageTitleService.setTitle("Request or rent the book");
+    this.pageTitleService.setTitle("Mass Book Request");
 
     /* Page subTitle */
-    this.pageTitleService.setSubTitle("You can request a book or rent a book");
+    this.pageTitleService.setSubTitle("You can request number of books for social cause.");
 
     this.requestBook = this.formBuilder.group({
       name : [null, [Validators.required] ],
-      no_of_books  : [null, [Validators.required] ],
-      pan_number      : [null, [Validators.required] ],
+      number_of_books  : [null, [Validators.required] ],
+      pan_no      : [null, [Validators.required] ],
       reason   : [null, [Validators.required] ],
       publication   : [null, [] ],
+      organization_name   : [null, [Validators.required] ],
+      category   : [null, [Validators.required] ],
     });
   }
 
   ngOnInit() {
+    this.service.getCategories().subscribe(response => {
+        if (response['status'] === 1) {
+          this.categories = response.data;
+        }else{
+          this.toastr.error(response['message']);
+        }
+      },
+      err => {
+        this.toastr.error(err['error']['details']['message']);
+      },
+      () => {}
+    );
   }
 
   /*
@@ -40,10 +61,22 @@ export class MassRequestComponent implements OnInit {
     this.isSubmitted = true;
     if(this.requestBook.valid)
     {
-      console.log(this.requestBook.value);
+      let data = this.requestBook.value;
+      data.requested_by = localStorage.getItem('api_token');
+      this.service.submitMassRequest(this.requestBook.value).subscribe(response => {
+          if (response['status'] === 1) {
+            this.toastr.show('successfully uploaded');
+          }else{
+            this.toastr.error('successfully uploaded');
 
-    } else{
-      console.log("Error!");
+          }
+        },
+        err => {
+          this.toastr.error(err['error']['details']['message']);
+        },
+        () => {}
+      );
+
     }
   }
 
