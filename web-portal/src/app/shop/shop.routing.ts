@@ -21,7 +21,7 @@ export const ShopRoutes: Routes = [{
     path: 'product-checkout',
     component: ProductCheckoutComponent
   },{
-    path: 'product-detail',
+    path: 'product-detail/:bookId',
     component: ProductDetailComponent
   }]
 }];
