@@ -20,7 +20,28 @@ class BookController extends Controller
         $this->commonService = $commonService;
         $this->book = $book;
     }
+    public function bookListApi(Request $request)
+    {
+        $searchQuery = $request->input('book_name');
 
+        $booksQuery = Book::join('users', 'users.id', '=', 'books.user_id')
+            ->join('categories', 'categories.id', '=', 'books.category_id')
+            ->select('books.*','categories.name as category','users.name as user');
+
+        if($searchQuery) {
+            $booksQuery->where('books.name', 'like', '%' . $searchQuery . '%')
+                ->orWhere('categories.name', 'like', '%' . $searchQuery . '%');
+        }
+        if($request->has('category')) {
+            $categories = explode(',',$request->category);
+            $booksQuery->orWhereIn('categories.id',$categories);
+        }
+
+        $books = $booksQuery->get();
+        $book_list['status'] = '1';
+        $book_list['message'] = 'Success';
+        return response()->json(['status'=>'1','message'=>'Success',$books])->setStatusCode(200);
+    }
     public function create(Request $request)
     {
         if($request->hasFile('image')) {
@@ -38,28 +59,6 @@ class BookController extends Controller
         $attributes['image'] = $filename;
 
         return $this->commonService->save($this->book, $attributes);
-    }
-
-    public function bookListApi(): JsonResponse
-    {
-        $books = $this->book->all();
-        $book_list['status'] = '1';
-        $book_list['message'] = 'Success';
-        foreach($books as $key=>$book){
-            $book_list['data'] [] = [
-                "user_id" =>$book->user_id,
-                "name" =>$book->name,
-                "author" =>$book->author,
-                "publication" => $book->publication,
-                "description" => $book->description,
-                "is_request" => $book->is_request,
-                "is_for_rent" =>$book->is_for_rent,
-                "category_id" =>$book->category_id,
-                "image" =>$book->image,
-            ];
-        }
-
-        return response()->json($book_list)->setStatusCode(200);
     }
 
     public function otherBookList(int $user_id, int $book_id): JsonResponse

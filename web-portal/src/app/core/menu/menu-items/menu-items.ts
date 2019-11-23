@@ -86,8 +86,13 @@ const HEADERMENUITEMS = [
          { state: 'blog-no-sidebar', name: 'Blog No Sidebar', type:"link"},
          { state: 'blog-detail', name: 'Blog Detail', type:"link"}
       ]
-   }
-   ];
+   },
+  {
+    name: 'Login',
+    type: 'link',
+    state: 'login'
+  }
+];
 
 const FOOTERMENU = [
    {

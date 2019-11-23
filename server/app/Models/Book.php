@@ -12,11 +12,14 @@ class Book extends Model
         'user_id',
         'author',
         'publication',
-        'ifd_for_rent',
+        'is_for_rent',
         'is_request',
         'image',
         'category_id',
-        'description'
+        'description',
+        'price',
+        'discounted_price',
+        'is_acquired'
     ];
 
     public function category(): BelongsTo
