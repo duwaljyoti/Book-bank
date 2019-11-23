@@ -49,7 +49,11 @@ export const AppRoutes: Routes = [{
       component: ProductlistComponent
     },
     {
-      path: 'book-detail',
+      path: 'book-detail/:bookId',
+      component: ProductDetailComponent
+    },
+    {
+      path: 'product-detail',
       component: ProductDetailComponent
     },
     {
