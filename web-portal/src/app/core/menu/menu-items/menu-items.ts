@@ -26,27 +26,34 @@ const HEADERMENUITEMS = [
       name: "Home",
       type:"link"
    },
+
    {
-      state:"",
-      name:"Pages",
-      type:"sub",
-      icon: 'fa fa-caret-down',
-      children: [
-         { state: 'about', name: 'About', type:"link"},
-         { state: 'features', name: 'Features', type:"link"},
-         { state: 'contact', name: 'Contact', type:"link"},
-         { state: 'support', name: 'Support', type:"link"},
-      ]
+      state:"book-list",
+      name:"Book List",
+      type:"link",
    },
-   {
-      state:"",
-      name:"Shop",
-      type:"sub",
-      icon: 'fa fa-caret-down',
-      children: [
-         { state: 'product-list', name:'Product List', type:"link"},
-      ]
-   },
+  {
+    state:"mass-request",
+    name:"Mass Book Request",
+    type:"link",
+  },
+  {
+    state:"personal-request",
+    name:"Personal Book Request",
+    type:"link",
+  },
+  {
+    state:"",
+    name:"Keep in touch",
+    type:"sub",
+    icon: 'fa fa-caret-down',
+    children: [
+      { state: 'about', name: 'About', type:"link"},
+      { state: 'features', name: 'Features', type:"link"},
+      { state: 'contact', name: 'Contact', type:"link"},
+      { state: 'support', name: 'Support', type:"link"},
+    ]
+  },
   {
     name: 'Login',
     type: 'link',

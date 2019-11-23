@@ -15,6 +15,8 @@ import {RequestBookComponent} from "./request-book/request-book.component";
 import {MassRequestComponent} from "./mass-request/mass-request.component";
 import {PersonalRequestComponent} from "./personal-request/personal-request.component";
 import {RentRequestComponent} from "./rent-request/rent-request.component";
+import {ProductlistComponent} from "./shop/productlist/productlist.component";
+import {ProductDetailComponent} from "./shop/productDetail/productDetail.component";
 
 export const AppRoutes: Routes = [{
   path: '',
@@ -22,10 +24,10 @@ export const AppRoutes: Routes = [{
   children: [
     {
       path: '',
-      component: HomeComponent
+      component: ProductlistComponent
     },{
       path: 'home',
-      component: HomeComponent
+      component: ProductlistComponent
     }, {
       path: 'request-book',
       component: RequestBookComponent
@@ -41,6 +43,18 @@ export const AppRoutes: Routes = [{
     {
       path: 'personal-request',
       component: PersonalRequestComponent
+    },
+    {
+      path: 'book-list',
+      component: ProductlistComponent
+    },
+    {
+      path: 'book-detail/:bookId',
+      component: ProductDetailComponent
+    },
+    {
+      path: 'product-detail',
+      component: ProductDetailComponent
     },
     {
       path: 'about',
