@@ -10,7 +10,7 @@ class RequestBook extends Model
 
     protected $table = 'request_books';
     protected $fillable = [
-        'book_id',
+        'requested_by',
         'is_mass',
         'number_of_books',
         'organization_name',

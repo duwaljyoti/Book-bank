@@ -13,7 +13,9 @@ class RequestController extends Controller
     {
         $books = RequestBook::join('books_requests','request_books.id','=','books_requests.request_id')
                 ->join('books','books_requests.book_id','=','books.id')
-                ->where('is_mass',1)->get();
+                ->join('users','request_books.requested_by','=','users.id')
+                ->where('is_mass',1)
+                ->select('request_books.*','books.name as book_name','users.name as user_name')->get();
 
         return view('requests.list_mass_requests')->with('books',$books);
     }
@@ -22,7 +24,9 @@ class RequestController extends Controller
     {
         $books = RequestBook::join('books_requests','request_books.id','=','books_requests.request_id')
             ->join('books','books_requests.book_id','=','books.id')
-            ->where('is_mass',0)->get();
+            ->join('users','request_books.requested_by','=','users.id')
+            ->where('is_mass',0)
+            ->select('request_books.*','books.name as book_name','users.name as user_name')->get();
 
         return view('requests.list_personal_requests')->with('books',$books);
     }
