@@ -17,9 +17,9 @@ class CommonService
         return $model->select($select)->where($where)->with($with)->get();
     }
 
-    public function find(EloquentModel $model, int $id): EloquentCollection
+    public function find(EloquentModel $model, int $id, array $with = [], array $select = []): EloquentModel
     {
-        $modelObject =  $model->find($id);
+        $modelObject =  $model->with($with)->find($id);
         $classBaseName = class_basename($model);
         throw_if(!$modelObject, new ModelNotFoundException("$classBaseName not found."));
 
@@ -28,10 +28,16 @@ class CommonService
 
     public function save(EloquentModel $model, array $attributes, int $model_id = null)
     {
+//        dd($attributes);
         $modelObject = $model_id ? ($model->exists ? $model : $this->find($model, $model_id)) : $model;
 
         $modelObject->fill($attributes)->save();
 
         return $modelObject->fresh();
+    }
+
+    public function saveMany(EloquentModel $model, array $attributes)
+    {
+        return $model->insertGetId($attributes);
     }
 }

@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware'=>'authenticate_token'], function(){
     Route::post('book', 'API\BookController@create')->name('book_create');
+    Route::post('request', 'API\RequestController@create')->name('request_create');
 });
 
 

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class RequestBook extends Model
@@ -21,5 +22,10 @@ class RequestBook extends Model
     public function book(): HasOne
     {
         return $this->hasOne(Book::class, 'id', 'book_id');
+    }
+
+    public function booksRequests(): HasMany
+    {
+        return $this->hasMany(BooksRequests::class, 'request_id');
     }
 }

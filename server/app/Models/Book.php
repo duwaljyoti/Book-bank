@@ -19,7 +19,8 @@ class Book extends Model
         'description',
         'price',
         'discounted_price',
-        'is_acquired'
+        'is_acquired',
+        'is_request'
     ];
 
     public function category(): BelongsTo
