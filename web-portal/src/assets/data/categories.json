@@ -1,23 +1,32 @@
 {
   "data":[
     {
-      "name":"Gardening",
+      "name":"Art",
       "border_color": "border-primary"
     },
     {
-      "name":"landscape designing",
+      "name":"Autobiography",
       "border_color": "border-warning"
     },
     {
-      "name":"Lawn And Garden Care",
+      "name":"Textbook",
       "border_color": "border-danger"
     },
     {
-      "name":"Plan Care",
+      "name":"Textbook",
       "border_color": "border-success"
     },
     {
-      "name":"Planting And Removal",
+      "name":"Biography",
+      "border_color": "border-info"
+    },{
+      "name":"Travel",
+      "border_color": "border-info"
+    },{
+      "name":"Math",
+      "border_color": "border-info"
+    },{
+      "name":"Crime",
       "border_color": "border-info"
     }
   ]
