@@ -50,7 +50,11 @@ class RequestController extends Controller
             $this->commonService->saveMany($this->booksRequestsModel, $formattedBookInfo);
         }
 
-        return $this->commonService->find($this->requestBookModel, $request_info['id'], ['booksRequests.book']);
+        $response['status'] = 1;
+        $response['message']= 'Success';
+        $response['data'] = $this->commonService->find($this->requestBookModel, $request_info['id'], ['booksRequests.book']);
+
+        return response()->json($response, 200);
     }
 
     public function bookRequest()

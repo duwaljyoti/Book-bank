@@ -69,7 +69,13 @@ class BookController extends Controller
         $attributes = $request->all();
         $attributes['image'] = $filename;
 
-        return $this->commonService->save($this->book, $attributes);
+        $book = $this->commonService->save($this->book, $attributes);
+
+        $response['status'] = 1;
+        $response['message'] = 'Success';
+        $response['data'] = $this->find($book['id']);
+
+        return response()->json($response, 200);
     }
 
     public function find(int $id)
