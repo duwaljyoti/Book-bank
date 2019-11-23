@@ -1,0 +1,54 @@
+<div class="team pt-6">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-10 mx-auto">
+        <div class="card-body p-0">
+          <form (ngSubmit)="submit(requestBook.value)" [formGroup]="requestBook">
+            <div class="form-row">
+              <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
+                <label class="" for="book-name">Book Name</label>
+                <input [ngClass]="hasError('name')?'is-invalid':''" class="form-control"
+                       formControlName="name" id="book-name" placeholder="" required type="text">
+                <span *ngIf="checkFieldWithErrorType('name', 'required')"
+                      class="text-danger">Book Name is required</span>
+              </div>
+              <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
+                <label class="" for="author-name">Pan Number</label>
+                <input [ngClass]="hasError('pan_number')?'is-invalid':''" class="form-control"
+                       formControlName="pan_number" id="author-name" placeholder="" required type="text">
+                <span *ngIf="checkFieldWithErrorType('pan_number', 'required')"
+                      class="text-danger">Pan Number is required</span>
+              </div>
+              <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
+                <label class="" for="publication-name">Publication Name</label>
+                <input  class="form-control"
+                       formControlName="publication" id="publication-name" placeholder="" required type="text">
+              </div>
+              <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
+                <label class="" for="number-of-books">Number of books</label>
+                <input [ngClass]="hasError('no_of_books')?'is-invalid':''" class="form-control"
+                       formControlName="no_of_books" id="number-of-books" placeholder="" required type="text">
+                <span *ngIf="checkFieldWithErrorType('no_of_books', 'required')"
+                      class="text-danger">Books number is required</span>
+              </div>
+
+              <div class="form-group col-12">
+                <label class="" for="reason">Reason for request</label>
+                <textarea [ngClass]="hasError('reason')?'is-invalid':''" class="form-control"
+                          formControlName="reason" id="reason" placeholder="" required rows="4"
+                          rows="5"></textarea>
+                <span *ngIf="checkFieldWithErrorType('reason', 'required')"
+                      class="text-danger">Book  is required</span>
+              </div>
+              <div class="form-group mr-4">
+                <div class="form-group">
+                  <button class="btn btn-dark btn-chk-dark inverse" type="submit">Send Messages</button>
+                </div>
+              </div>
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
