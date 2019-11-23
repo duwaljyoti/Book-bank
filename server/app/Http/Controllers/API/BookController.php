@@ -30,6 +30,7 @@ class BookController extends Controller
 
         $booksQuery = Book::join('users', 'users.id', '=', 'books.user_id')
             ->join('categories', 'categories.id', '=', 'books.category_id')
+            ->where('is_request','=',0)
             ->select('books.*','categories.name as category','users.name as user');
 
         if($searchQuery) {
@@ -69,6 +70,13 @@ class BookController extends Controller
         $attributes['image'] = $filename;
 
         return $this->commonService->save($this->book, $attributes);
+    }
+
+    public function find(int $id)
+    {
+        $with = ['category', 'user'];
+
+        return $this->commonService->find($this->book, $id, $with);
     }
 
     public function otherBookList(int $user_id, int $book_id): JsonResponse

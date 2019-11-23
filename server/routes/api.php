@@ -23,6 +23,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::post('borrow/rent', 'API\BookController@borrowCreate');
 /*});*/
 
+Route::get('book/{id}','API\BookController@find')->name('book_detail');
+
 
 Route::get('books','API\BookController@bookListApi')->name('get_book_name');
 Route::get('categories','API\CategoryController@CategoryApi')->name('get_category');
@@ -31,7 +33,6 @@ Route::get('user/{user_id}/other-books/{book_id}', 'API\BookController@otherBook
 
 
 Route::get('request-book','API\RequestController@bookRequest')->name('get_book_request');
-//Route::post('filter-book','API\BookListController@filterBook')->name('filter_book_list');
 
 Route::post('users', 'API\UserController@create')->name('user_create');
 Route::get('users', 'API\UserController@userDetailsByEmail')
