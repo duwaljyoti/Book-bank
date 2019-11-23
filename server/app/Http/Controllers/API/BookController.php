@@ -4,6 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Services\CommonService;
 use App\Models\Book;
+use App\Models\Rent;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,11 +16,13 @@ class BookController extends Controller
 {
     private $commonService;
     private $book;
+    private $rent;
 
-    public function __construct(CommonService $commonService, Book $book)
+    public function __construct(CommonService $commonService, Book $book, Rent $rent)
     {
         $this->commonService = $commonService;
         $this->book = $book;
+        $this->rent = $rent;
     }
     public function bookListApi(Request $request)
     {
@@ -85,6 +89,20 @@ class BookController extends Controller
         $book_list['data'] [] = $books;
 
         return response()->json($book_list,200);
+
+    }
+
+    public function borrowCreate(Request $request)
+    {
+        $attributes = $request->all();
+        $from_date = Carbon::now();
+        $due_date = Carbon::now()->addDays(30)->toDateString();
+        $attributes['book_id'] = $request->book_id;
+        $attributes['rented_by'] = $request->rented_by;
+        $attributes['from_date'] = $from_date->toDateString();
+        $attributes['due_date'] =$due_date;
+
+        return $this->commonService->save($this->rent, $attributes);
 
     }
 }
