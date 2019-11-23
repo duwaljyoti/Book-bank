@@ -46,7 +46,7 @@ export class PersonalRequestComponent implements OnInit {
         }
       },
       err => {
-        this.toastr.error(err['error']['message']);
+        this.toastr.error(err.error);
       },
       () => {}
     );
@@ -61,8 +61,21 @@ export class PersonalRequestComponent implements OnInit {
     if(this.requestBook.valid)
     {
       let data = this.requestBook.value;
-      data.requested_by = localStorage.getItem('api_token');
-      data.is_mass = 0;
+      data.requested={
+        'requested_by' : 1,
+        'reason' : this.requestBook.value.reason,
+        'is_mass' : 1,
+      }
+      data.books=[{
+        'name' : this.requestBook.value.name,
+        'category_id' : this.requestBook.value.category_id,
+        'author' : this.requestBook.value.author,
+        'is_request' : 1,
+      }]
+      // delete  data.name;
+      // delete  data.category_id;
+      // delete  data.author;
+      // delete  data.is_request;
       this.service.submitMassRequest(data).subscribe(response => {
           if (response['status'] == 1) {
             this.toastr.show('successfully uploaded');
@@ -72,7 +85,8 @@ export class PersonalRequestComponent implements OnInit {
           }
         },
         err => {
-          this.toastr.error(err['error']['message']);
+        console.log(err);
+          this.toastr.error(err.error);
         },
         () => {}
       );

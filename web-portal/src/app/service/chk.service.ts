@@ -331,7 +331,7 @@ export class ChkService {
 
 
   submitMassRequest(data) {
-    return this.http.post<Response>('/mass-request', data);
+    return this.http.post<Response>('/request', data);
   }
 
   getCategories() {

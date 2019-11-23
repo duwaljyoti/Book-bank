@@ -48,7 +48,7 @@ export class MassRequestComponent implements OnInit {
         }
       },
       err => {
-        this.toastr.error(err['error']['message']);
+        this.toastr.error(err.error);
       },
       () => {}
     );
@@ -62,9 +62,31 @@ export class MassRequestComponent implements OnInit {
     this.isSubmitted = true;
     if(this.requestBook.valid)
     {
+      // let data = this.requestBook.value;
+      // data.requested_by = localStorage.getItem('api_token');
+      // data.is_mass = 1;
+      // data.is_request = 1;
+
       let data = this.requestBook.value;
-      data.requested_by = localStorage.getItem('api_token');
-      data.is_mass = 1;
+      data.requested={
+        'requested_by' : 1,
+        'reason' : this.requestBook.value.reason,
+        'is_mass' : 1,
+        'number_of_books':this.requestBook.value.number_of_books,
+        'pan_no':this.requestBook.value.pan_no,
+        'organization_name':this.requestBook.value.organization_name,
+      }
+      data.books=[{
+        'name' : this.requestBook.value.name,
+        'category_id' : this.requestBook.value.category_id,
+        'author' : this.requestBook.value.author,
+        'is_request' : 1,
+        'publication' : this.requestBook.value.publication,
+      }]
+      // delete  data.name;
+      // delete  data.category_id;
+      // delete  data.author;
+      // delete  data.is_request;
       this.service.submitMassRequest(data).subscribe(response => {
           if (response['status'] == 1) {
             this.toastr.show('successfully uploaded');
@@ -74,7 +96,7 @@ export class MassRequestComponent implements OnInit {
           }
         },
         err => {
-          this.toastr.error(err['error']['message']);
+          this.toastr.error(err.error);
         },
         () => {}
       );
