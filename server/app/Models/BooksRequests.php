@@ -21,6 +21,6 @@ class BooksRequests extends Model
 
     public function request(): HasOne
     {
-        return $this->hasOne(Request::class, 'id', 'request_id');
+        return $this->hasOne(RequestBook::class, 'id', 'request_id');
     }
 }

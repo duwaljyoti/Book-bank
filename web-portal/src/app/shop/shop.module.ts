@@ -12,20 +12,23 @@ import { ProductCheckoutComponent } from './productCheckout/productCheckout.comp
 import { ProductDetailComponent } from './productDetail/productDetail.component';
 import { ProductlistComponent } from './productlist/productlist.component';
 import {Ng5SliderModule} from 'ng5-slider';
+import {DisqusModule} from 'ngx-disqus';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule.forChild(ShopRoutes),
+    RouterModule.forChild(ShopRoutes),
     WidgetsModule,
-    Ng5SliderModule
+    Ng5SliderModule,
+    DisqusModule
   ],
   declarations: [
   	ProductCartComponent,
   	ProductCheckoutComponent,
   	ProductDetailComponent,
-  	ProductlistComponent
+  	ProductlistComponent,
   ]
 })
 

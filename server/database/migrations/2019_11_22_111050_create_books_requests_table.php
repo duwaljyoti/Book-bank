@@ -18,7 +18,7 @@ class CreateBooksRequestsTable extends Migration
             $table->unsignedInteger('book_id')->nullable();
             $table->unsignedInteger('request_id')->nullable();
             $table->foreign('book_id')->references('id')->on('books')->onDelete('CASCADE');
-            $table->foreign('request_id')->references('id')->on('requests')->onDelete('CASCADE');
+            $table->foreign('request_id')->references('id')->on('request_books')->onDelete('CASCADE');
             $table->timestamps();
         });
     }

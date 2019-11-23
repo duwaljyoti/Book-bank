@@ -27,9 +27,24 @@ Route::get('test_layout', function () {
     return view('layout');
 });
 
-Route::group(['namespace'=>'Book','prefix'=>'admin','middleware'=>'auth'], function () {
+/*Route::group(['namespace'=>'Book','prefix'=>'admin','middleware'=>'auth'], function () {
     Route::get('books', 'BookController@index');
 });
+Route::group(['namespace'=>'User','prefix'=>'admin','middleware'=>'auth'], function () {
+    Route::get('users', 'UserController@index');
+});*/
+Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware'=>'auth'], function () {
+
+    Route::get('books', 'BookController@index');
+    Route::get('users', 'UserController@index');
+
+    Route::get('mass_requests', 'RequestController@massRequests');
+    Route::get('personal_requests', 'RequestController@personalRequests');
+    Route::get('dashboard','DashboardController@index')->name('dashboard');
+
+    Route::resource('books','BookController');
+});
+
 
 Route::get('admin/login','Auth\LoginController@showLoginForm')->name('login');
 Route::get('admin/logout','Auth\LoginController@logout')->name('logout');

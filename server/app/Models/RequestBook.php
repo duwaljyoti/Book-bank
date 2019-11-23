@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class Request extends Model
+class RequestBook extends Model
 {
+
+    protected $table = 'request_books';
     protected $fillable = [
         'book_id',
         'is_mass',

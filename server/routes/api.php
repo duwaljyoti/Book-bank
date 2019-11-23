@@ -28,3 +28,4 @@ Route::get('user/{user_id}/other-books/{book_id}', 'API\BookController@otherBook
     ->name('other_book_list');
 
 
+Route::get('request-book','API\RequestController@bookRequest')->name('get_book_request');
