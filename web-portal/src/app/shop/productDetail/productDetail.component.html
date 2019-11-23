@@ -36,9 +36,14 @@
 				</div>
         <p>{{ bookDetail?.description }}</p>
 				<div class="d-flex justify-content-between">
-          <div class="align-content-start">
-            <button class="btn btn-primary" (click)="rent(bookDetail.id)">Rent</button> &nbsp; &nbsp; &nbsp;
-            <button class="btn btn-primary" (click)="acquire(bookDetail.id)">Acquire</button>
+          <div class="align-content-start" *ngIf="localUser()?.logged_in_user_id">
+            <div *ngIf="bookStatus?.isRentable">
+              <button class="btn btn-primary" (click)="rent(bookDetail.id)">Rent</button> &nbsp; &nbsp; &nbsp;
+            </div>
+            <div *ngIf="bookStatus?.is_acquirable">
+              <button class="btn btn-primary" (click)="acquire(bookDetail.id)">Acquire</button>
+            </div>
+            <div *ngIf="bookStatus?.message">{{  bookStatus.message }}</div>
           </div>
 				</div>
 			</div>
@@ -72,26 +77,16 @@
         		<div class="col-sm-6 col-md-6 col-lg-3" *ngFor="let product of relatedProducts">
 					<div class="card border-0 mb-4">
 						<div class="overlay-wrap mb-4 card-shadow border-rad">
-							<img class="img-fluid border-rad w-100" [src]="product.image" alt="Card image cap" width="280" height="260" />
-							<div class="cart-icon">
-								<ul class="list-unstyled">
-									<li>
-										<a routerLink="/product-detail" class="square-40 bg-white rounded-circle text-dark mb-2 card-shadow">
-											<i class="fa fa-heart text-danger"></i>
-										</a>
-									</li>
-									<li>
-										<a routerLink="/product-detail" class="square-40 bg-white rounded-circle text-dark card-shadow">
-											<i class="fa fa-search"></i>
-										</a>
-									</li>
-								</ul>
-							</div>
+							<img class="img-fluid border-rad w-100"
+                   src="/assets/img/gettyimages-173015527-612x612.jpg"
+                   alt="Card image cap" width="280" height="260" />
 						</div>
 						<div class="card-body p-0">
-							<h5 class="text-capitalize mb-3">{{product.title}}</h5>
+							<h5 class="text-capitalize mb-3">{{product.name}}</h5>
 							<p>{{product.description}}</p>
-							<p class="text-primary">{{product.price | currency: 'USD' : true}}</p>
+              <a [routerLink]="'/book-detail/' + product.id">
+                <h5 class="text-capitalize mb-3">{{product.name}}</h5>
+              </a>
 						</div>
 					</div>
 				</div>

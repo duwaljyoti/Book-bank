@@ -14,6 +14,8 @@ export class ProductDetailComponent implements OnInit {
 	productdeatil    : any;
 	relatedProducts  : any;
 	bookDetail;
+	currentBookId;
+	bookStatus;
 
 	constructor(
 	  private pageTitleService: PageTitleService,
@@ -35,20 +37,23 @@ export class ProductDetailComponent implements OnInit {
 			);
 	}
 
-  getBookDetail = (bookId) => this.http.get<Response>(`/api/book/${bookId}`);
+  getBookDetail = (bookId) => this.http.get<Response>(`/book/${bookId}`);
 
   ngOnInit() {
-    console.log(this.route.snapshot.paramMap.get('bookId'));
+    this.currentBookId = parseInt(this.route.snapshot.paramMap.get('bookId'), 10);
     this.getBookDetail(parseInt(this.route.snapshot.paramMap.get('bookId'), 10))
       .subscribe(result => {
         // @ts-ignore
         this.bookDetail = result;
         console.log(this.bookDetail);
       });
+
+    this.getRelatedBooks();
+    this.getBookStatus();
   }
 
   rent = (bookId) => {
-    this.http.post<Response>('/api/borrow/rent', {
+    this.http.post<Response>('/borrow/rent', {
       rented_by: 1,
       book_id: bookId
     }).subscribe(result => {
@@ -58,11 +63,27 @@ export class ProductDetailComponent implements OnInit {
 
   // todo
   acquire = (bookId) => {
-    this.http.post<Response>(`/api/books/${bookId}/acquire`, {
-      acquired_by: 1,
-      book_id: bookId
-    }).subscribe(result => {
+    this.http.post<Response>(`/acquire_find/${localStorage.logged_in_user_id}/${bookId}`, {}).subscribe(result => {
       console.log(121, result);
+      this.getBookStatus();
     });
+  }
+
+  localUser = () => localStorage;
+
+  getBookStatus = () => {
+    this.http.get<Response>(`/book_status/${this.currentBookId}`).subscribe(result => {
+      this.bookStatus = result;
+      console.log(this.bookStatus);
+    });
+  }
+
+  getRelatedBooks = () => {
+    const userId = localStorage.logged_in_user_id;
+    if (userId) {
+      this.http.get<Response>(`/user/${userId}/other-books/${this.currentBookId}`).subscribe(result => {
+        this.relatedProducts = result.data;
+      });
+    }
   }
 }
