@@ -40,7 +40,7 @@ class BookController extends Controller
         $books = $booksQuery->get();
         $book_list['status'] = '1';
         $book_list['message'] = 'Success';
-        return response()->json(['status'=>'1','message'=>'Success',$books])->setStatusCode(200);
+        return response()->json(['status'=>'1','message'=>'Success','data'=>$books])->setStatusCode(200);
     }
     public function create(Request $request)
     {

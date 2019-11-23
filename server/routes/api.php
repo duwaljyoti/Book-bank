@@ -22,7 +22,7 @@ Route::group(['middleware'=>'authenticate_token'], function(){
 });
 
 
-Route::get('book-list','API\BookController@bookListApi')->name('get_book_name');
+Route::get('books','API\BookController@bookListApi')->name('get_book_name');
 Route::get('categories','API\CategoryController@CategoryApi')->name('get_category');
 Route::get('user/{user_id}/other-books/{book_id}', 'API\BookController@otherBookList')
     ->name('other_book_list');
