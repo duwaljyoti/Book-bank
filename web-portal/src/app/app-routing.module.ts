@@ -9,6 +9,7 @@ import {AboutComponent} from './about/about.component';
 import {SearchComponent} from './search/search.component';
 import {SupportComponent} from './support/support.component';
 import {sidebarWidgetsComponent} from './sidebarWidgets/sidebarWidgets.component';
+import {LoginComponent} from './login/login.component';
 import {ContactComponent} from "./contact/contact.component";
 import {RequestBookComponent} from "./request-book/request-book.component";
 
@@ -38,10 +39,16 @@ export const AppRoutes: Routes = [{
     }, {
       path: 'search',
       component: SearchComponent
-    }, {
+    },
+    {
       path: 'support',
       component: SupportComponent
-    }, {
+    },
+    {
+      path: 'login',
+      component: LoginComponent
+    },
+    {
       path: '',
       loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule)
     }, {

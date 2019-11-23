@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SlickModule } from 'ngx-slick';
 import { DirectivesModule } from './core/directive/directives.module';
@@ -37,6 +37,22 @@ import { sidebarWidgetsComponent } from './sidebarWidgets/sidebarWidgets.compone
 import {ApiUrlInterceptor} from './shared/api-url-interceptor';
 import {ToastrModule} from 'ngx-toastr';
 import {RequestBookComponent} from "./request-book/request-book.component";
+import {AuthService, AuthServiceConfig, GoogleLoginProvider} from 'angular-6-social-login';
+import { LoginComponentComponent } from './login-component/login-component.component';
+import { LoginComponent } from './login/login.component';
+
+
+export function socialConfigs() {
+  const config = new AuthServiceConfig(
+    [
+      {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider('57087575981-q0srh877tatg513tu706pbbjl94hgd3k.apps.googleusercontent.com')
+      }
+    ]
+  );
+  return config;
+}
 
 @NgModule({
    declarations: [
@@ -53,7 +69,10 @@ import {RequestBookComponent} from "./request-book/request-book.component";
       SearchComponent,
       SupportComponent,
       sidebarWidgetsComponent,
-      RequestBookComponent
+      RequestBookComponent,
+     // remove this loginComponentComponent
+      LoginComponentComponent,
+      LoginComponent,
    ],
    imports: [
       BrowserModule,
@@ -77,7 +96,12 @@ import {RequestBookComponent} from "./request-book/request-book.component";
       MenuItems,
       PageTitleService,
       ChkService,
-     { provide: HTTP_INTERCEPTORS, useClass: ApiUrlInterceptor, multi: true }
+     { provide: HTTP_INTERCEPTORS, useClass: ApiUrlInterceptor, multi: true },
+     AuthService,
+     {
+       provide: AuthServiceConfig,
+       useFactory: socialConfigs
+     }
    ],
    bootstrap: [AppComponent]
 })
