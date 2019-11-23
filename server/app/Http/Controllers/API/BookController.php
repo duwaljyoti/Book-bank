@@ -101,7 +101,7 @@ class BookController extends Controller
         $books = $this->commonService->get($this->book, $where, $with, $select);
         $book_list['status'] = '1';
         $book_list['message'] = 'Success';
-        $book_list['data'] [] = $books;
+        $book_list['data'] = $books;
 
         return response()->json($book_list,200);
 
