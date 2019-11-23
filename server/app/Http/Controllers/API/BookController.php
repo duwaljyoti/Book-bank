@@ -113,4 +113,24 @@ class BookController extends Controller
         return $this->commonService->save($this->rent, $attributes);
 
     }
+
+    public function isBookRented(Request $request){
+        $book_id = $request->get('book_id');
+        $book_rented = Rent::where('book_id',$book_id)
+            ->where('due_date', '>', Carbon::now())
+            ->first();
+        if(count($book_rented)>0){
+            $rented = 1;
+        }else $rented = 0;
+
+
+        if(count($book_rented)<0){
+            $book_acquired = Book::where('id',$book_id)->where('is_acquired',1)->get();
+            if($book_acquired){
+                $acquired = 1;
+            } else $acquired = 0;
+        }
+        return response()->json(['status'=>'1','message'=>'Success','rented'=>$rented, 'acquired'=>$acquired])->setStatusCode(200);
+    }
+
 }
