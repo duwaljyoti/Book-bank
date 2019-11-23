@@ -116,9 +116,6 @@ class BookController extends Controller
         $attributes['from_date'] = $from_date->toDateString();
         $attributes['due_date'] =$due_date;
 
-        $data['is_for_rent'] = 1;
-        Book::whereId($request->book_id)->update($data);
-
         return $this->commonService->save($this->rent, $attributes);
 
     }
