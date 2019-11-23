@@ -41,6 +41,8 @@ import {AuthService, AuthServiceConfig, GoogleLoginProvider} from 'angular-6-soc
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { LoginComponent } from './login/login.component';
 import { MassRequestComponent } from './mass-request/mass-request.component';
+import {PersonalRequestComponent} from "./personal-request/personal-request.component";
+import {TokenInterceptor} from "./shared/token.interceptor";
 
 
 export function socialConfigs() {
@@ -75,6 +77,7 @@ export function socialConfigs() {
       LoginComponentComponent,
       LoginComponent,
       MassRequestComponent,
+     PersonalRequestComponent,
    ],
    imports: [
       BrowserModule,
@@ -99,6 +102,8 @@ export function socialConfigs() {
       PageTitleService,
       ChkService,
      { provide: HTTP_INTERCEPTORS, useClass: ApiUrlInterceptor, multi: true },
+     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true
+     },
      AuthService,
      {
        provide: AuthServiceConfig,

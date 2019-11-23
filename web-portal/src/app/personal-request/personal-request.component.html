@@ -6,21 +6,6 @@
           <form (ngSubmit)="submit(requestBook.value)" [formGroup]="requestBook">
             <div class="form-row">
               <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="" for="organization_name">Organization Name</label>
-                <input [ngClass]="hasError('pan_no')?'is-invalid':''" class="form-control"
-                       formControlName="organization_name" id="organization_name" placeholder="" required type="text">
-                <span *ngIf="checkFieldWithErrorType('organization_name', 'required')"
-                      class="text-danger">Organization_name is required</span>
-              </div>
-              <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="" for="pan_no">Pan Number</label>
-                <input [ngClass]="hasError('pan_no')?'is-invalid':''" class="form-control"
-                       formControlName="pan_no" id="pan_no" placeholder="" required type="text">
-                <span *ngIf="checkFieldWithErrorType('pan_no', 'required')"
-                      class="text-danger">Pan Number is required</span>
-              </div>
-
-              <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
                 <label class="" for="book-name">Book Name</label>
                 <input [ngClass]="hasError('name')?'is-invalid':''" class="form-control"
                        formControlName="name" id="book-name" placeholder="" required type="text">
@@ -29,7 +14,7 @@
               </div>
               <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
                 <label class="" for="category_id">Category</label>
-                <select [ngClass]="hasError('category_id')?'is-invalid':''"  class="form-control"
+                <select [ngClass]="hasError('category_id')?'is-invalid':''" class="form-control"
                         formControlName="category_id"
                         id="category_id" placeholder="" required>
                   <option *ngFor="let category of categories" value="{{category.value}}">{{category.name}}</option>
@@ -40,22 +25,17 @@
               </div>
               <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
                 <label class="" for="publication-name">Publication Name</label>
-                <input  class="form-control"
+                <input class="form-control"
                        formControlName="publication" id="publication-name" placeholder="" required type="text">
               </div>
-              <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="" for="number_of_books">Number of books</label>
-                <input [ngClass]="hasError('number_of_books')?'is-invalid':''" class="form-control"
-                       formControlName="number_of_books" id="number_of_books" placeholder="" required type="text">
-                <span *ngIf="checkFieldWithErrorType('number_of_books', 'required')"
-                      class="text-danger">Books number is required</span>
-              </div>
 
-              <div class="form-group col-12">
+              <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
                 <label class="" for="author-name">Author Name</label>
                 <input class="form-control"
                        formControlName="author" id="author-name" placeholder="" required type="text">
               </div>
+
+
               <div class="form-group col-12">
                 <label class="" for="reason">Reason for request</label>
                 <textarea [ngClass]="hasError('reason')?'is-invalid':''" class="form-control"
@@ -71,8 +51,8 @@
               </div>
             </div>
           </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
