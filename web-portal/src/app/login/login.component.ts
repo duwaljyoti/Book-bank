@@ -5,6 +5,7 @@ import { Socialusers } from '../socialusers';
 import { SocialLoginService } from '../social-login.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {HttpClient} from '@angular/common/http';
+import {LoggedInuserDataService} from "../shared/loggedInuserData.service";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
     public OAuth: AuthService,
     private SocialloginService: SocialLoginService,
     private router: Router,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private loggedInEmailData: LoggedInuserDataService
   ) { }
 
   ngOnInit() {
@@ -50,6 +52,8 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('logged_in_user_id', result.data.id);
       localStorage.setItem('logged_in_user_email', socialusers.email);
       localStorage.setItem('loggedIn', 'true');
+      this.loggedInEmailData.changeMessage(socialusers.email);
+
       this.router.navigate(['/home']);
     });
   }

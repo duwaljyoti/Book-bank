@@ -28,6 +28,15 @@
             </li>
           </ul>
         </li>
+        <li menuToggleLink class="nav-item" routerLinkActive="open">
+          <span *ngIf="loggedInEmail; else logOut">
+            <a menuToggle class="nav-link text-lowercase"  routerLinkActive="active-link" (click)="logoutClick()">{{loggedInEmail}} Logout</a>
+          </span>
+          <ng-template #logOut>
+            <a menuToggle class="nav-link" [routerLink]="['/login']" routerLinkActive="active-link">Login</a>
+          </ng-template>
+
+        </li>
         <li>
           <div class="search-form" click-outside (clickOutside)="onClickOutside($event)">
 						<span data-target="#search-style-simple" (click)="searchActiveFunction()">

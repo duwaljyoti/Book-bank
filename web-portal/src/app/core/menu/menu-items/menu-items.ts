@@ -52,11 +52,6 @@ const HEADERMENUITEMS = [
       { state: 'contact', name: 'Contact', type:"link"},
       { state: 'support', name: 'Support', type:"link"},
     ]
-  },
-  {
-    name: 'Login',
-    type: 'link',
-    state: 'login'
   }
 ];
 

@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class LoggedInuserDataService {
 
-  private loggedInEmailMessageSource = new BehaviorSubject(localStorage.getItem('email'));
+  private loggedInEmailMessageSource = new BehaviorSubject(localStorage.getItem('logged_in_user_email'));
   loggedInEmail = this.loggedInEmailMessageSource.asObservable();
 
   constructor() { }
