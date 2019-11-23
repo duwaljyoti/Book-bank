@@ -29,4 +29,9 @@ class UserController extends Controller
         return $this->commonService->save($this->user, $attributes);
     }
 
+    public function userDetailsByEmail(Request $request){
+        $userdetails = User::where('email',$request->get('email'))->first();
+        return response()->json(['status'=>'1','message'=>'Success','data'=>$userdetails])->setStatusCode(200);
+    }
+
 }
