@@ -14,7 +14,7 @@ export class ProductlistComponent implements OnInit {
   productlist: any;
   categories: any;
   popularPosts: any;
-  productsList: any;
+  books: any;
 
   minValue: number = 50;
   maxValue: number = 200;
@@ -43,16 +43,14 @@ export class ProductlistComponent implements OnInit {
       err => console.log(err),
       () => this.popularPosts
     );
-
-    this.service.getProductsList().subscribe(response => {
-        this.productsList = response;
-      },
-      err => console.log(err),
-      () => this.productsList
-    );
   }
 
   ngOnInit() {
+    console.log(1212);
+    this.service.getBooks().subscribe(response => {
+      this.books = response.data;
+      console.log(this.books);
+    });
   }
 
 }
