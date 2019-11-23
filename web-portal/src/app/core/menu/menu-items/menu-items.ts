@@ -49,7 +49,6 @@ const HEADERMENUITEMS = [
     icon: 'fa fa-caret-down',
     children: [
       { state: 'about', name: 'About', type:"link"},
-      { state: 'features', name: 'Features', type:"link"},
       { state: 'contact', name: 'Contact', type:"link"},
       { state: 'support', name: 'Support', type:"link"},
     ]
@@ -65,11 +64,6 @@ const FOOTERMENU = [
    {
       state: "home",
       name: "Home",
-      type:"link"
-   },
-   {
-      state:"features",
-      name:"Features",
       type:"link"
    },
    {
@@ -136,11 +130,6 @@ const FOOTERMENU2 = [
    {
       state:"contact",
       name:"Contact",
-      type:"link"
-   },
-   {
-      state:"features",
-      name:"Features",
       type:"link"
    },
    {

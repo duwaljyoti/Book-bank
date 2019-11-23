@@ -16,8 +16,8 @@ export class ProductlistComponent implements OnInit {
   popularPosts: any;
   books: any;
 
-  minValue: number = 50;
-  maxValue: number = 200;
+  minValue: number = 0;
+  maxValue: number = 250;
   options: Options = {
     floor: 0,
     ceil: 250
