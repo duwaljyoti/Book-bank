@@ -11,7 +11,7 @@ class RequestController extends Controller
 {
     public function massRequests()
     {
-        $books = RequestBook::join('books_requests','requests.id','=','books_requests.request_id')
+        $books = RequestBook::join('books_requests','request_books.id','=','books_requests.request_id')
                 ->join('books','books_requests.book_id','=','books.id')
                 ->where('is_mass',1)->get();
 
@@ -20,7 +20,7 @@ class RequestController extends Controller
 
     public function personalRequests()
     {
-        $books = RequestBook::join('books_requests','requests.id','=','books_requests.request_id')
+        $books = RequestBook::join('books_requests','request_books.id','=','books_requests.request_id')
             ->join('books','books_requests.book_id','=','books.id')
             ->where('is_mass',0)->get();
 

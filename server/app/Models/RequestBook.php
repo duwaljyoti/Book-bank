@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class RequestBook extends Model
 {
 
-    protected $table = 'requests';
+    protected $table = 'request_books';
     protected $fillable = [
         'book_id',
         'is_mass',
