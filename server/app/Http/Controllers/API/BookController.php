@@ -4,6 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Services\CommonService;
 use App\Models\Book;
+use App\Models\Rent;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,11 +16,13 @@ class BookController extends Controller
 {
     private $commonService;
     private $book;
+    private $rent;
 
-    public function __construct(CommonService $commonService, Book $book)
+    public function __construct(CommonService $commonService, Book $book, Rent $rent)
     {
         $this->commonService = $commonService;
         $this->book = $book;
+        $this->rent = $rent;
     }
     public function bookListApi(Request $request)
     {
@@ -26,6 +30,7 @@ class BookController extends Controller
 
         $booksQuery = Book::join('users', 'users.id', '=', 'books.user_id')
             ->join('categories', 'categories.id', '=', 'books.category_id')
+            ->where('is_request','=',0)
             ->select('books.*','categories.name as category','users.name as user');
 
         if($searchQuery) {
@@ -62,10 +67,16 @@ class BookController extends Controller
         }
 
         $attributes = $request->all();
-        $filename = str_random(5).$request->file('image')->getClientOriginalName();
         $attributes['image'] = $filename;
 
         return $this->commonService->save($this->book, $attributes);
+    }
+
+    public function find(int $id)
+    {
+        $with = ['category', 'user'];
+
+        return $this->commonService->find($this->book, $id, $with);
     }
 
     public function otherBookList(int $user_id, int $book_id): JsonResponse
@@ -86,6 +97,20 @@ class BookController extends Controller
         $book_list['data'] [] = $books;
 
         return response()->json($book_list,200);
+
+    }
+
+    public function borrowCreate(Request $request)
+    {
+        $attributes = $request->all();
+        $from_date = Carbon::now();
+        $due_date = Carbon::now()->addDays(30)->toDateString();
+        $attributes['book_id'] = $request->book_id;
+        $attributes['rented_by'] = $request->rented_by;
+        $attributes['from_date'] = $from_date->toDateString();
+        $attributes['due_date'] =$due_date;
+
+        return $this->commonService->save($this->rent, $attributes);
 
     }
 }
