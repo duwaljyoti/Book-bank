@@ -24,10 +24,10 @@ export class ProductDetailComponent implements OnInit {
     private http: HttpClient
   ) {
 		/* Page title */
-	    this.pageTitleService.setTitle(" Product Detail ");
+	    this.pageTitleService.setTitle(" Book Detail ");
 
 	    /* Page subTitle */
-	    this.pageTitleService.setSubTitle(" 25% Off and Free global delivery for all products ");
+	    this.pageTitleService.setSubTitle(" ");
 
 
 		this.service.getRelatedProducts().
