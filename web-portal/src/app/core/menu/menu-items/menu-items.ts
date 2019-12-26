@@ -21,11 +21,11 @@ export interface ChildrenItems {
 }
 
 const HEADERMENUITEMS = [
-   {
-      state: "home",
-      name: "Home",
-      type:"link"
-   },
+   // {
+   //    state: "home",
+   //    name: "Home",
+   //    type:"link"
+   // },
 
    {
       state:"book-list",
@@ -43,16 +43,21 @@ const HEADERMENUITEMS = [
     type:"link",
   },
   {
-    state:"",
-    name:"Keep in touch",
-    type:"sub",
-    icon: 'fa fa-caret-down',
-    children: [
-      { state: 'about', name: 'About', type:"link"},
-      { state: 'contact', name: 'Contact', type:"link"},
-      { state: 'support', name: 'Support', type:"link"},
-    ]
-  }
+    state:"books-add",
+    name:"Add Books",
+    type:"link",
+  },
+  // {
+  //   state:"",
+  //   name:"Keep in touch",
+  //   type:"sub",
+  //   icon: 'fa fa-caret-down',
+  //   children: [
+  //     { state: 'about', name: 'About', type:"link"},
+  //     { state: 'contact', name: 'Contact', type:"link"},
+  //     { state: 'support', name: 'Support', type:"link"},
+  //   ]
+  // }
 ];
 
 const FOOTERMENU = [

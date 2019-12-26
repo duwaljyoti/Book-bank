@@ -3,20 +3,19 @@ import {CommonModule} from '@angular/common';
 import {Routes, RouterModule} from '@angular/router';
 
 import {MainComponent} from './main/main.component';
-import {HomeComponent} from './home/home.component';
-import {FeaturesComponent} from './features/features.component';
 import {AboutComponent} from './about/about.component';
 import {SearchComponent} from './search/search.component';
 import {SupportComponent} from './support/support.component';
 import {sidebarWidgetsComponent} from './sidebarWidgets/sidebarWidgets.component';
 import {LoginComponent} from './login/login.component';
-import {ContactComponent} from "./contact/contact.component";
-import {RequestBookComponent} from "./request-book/request-book.component";
-import {MassRequestComponent} from "./mass-request/mass-request.component";
-import {PersonalRequestComponent} from "./personal-request/personal-request.component";
-import {RentRequestComponent} from "./rent-request/rent-request.component";
-import {ProductlistComponent} from "./shop/productlist/productlist.component";
-import {ProductDetailComponent} from "./shop/productDetail/productDetail.component";
+import {ContactComponent} from './contact/contact.component';
+import {RequestBookComponent} from './request-book/request-book.component';
+import {MassRequestComponent} from './mass-request/mass-request.component';
+import {PersonalRequestComponent} from './personal-request/personal-request.component';
+import {RentRequestComponent} from './rent-request/rent-request.component';
+import {ProductlistComponent} from './shop/productlist/productlist.component';
+import {ProductDetailComponent} from './shop/productDetail/productDetail.component';
+import {AddBookComponent} from './add-book/add-book.component';
 
 export const AppRoutes: Routes = [{
   path: '',
@@ -59,7 +58,8 @@ export const AppRoutes: Routes = [{
     {
       path: 'about',
       component: AboutComponent
-    },{
+    },
+    {
       path: 'contact',
       component: ContactComponent
     }, {
@@ -73,6 +73,10 @@ export const AppRoutes: Routes = [{
     {
       path: 'login',
       component: LoginComponent
+    },
+    {
+      path: 'books-add',
+      component: AddBookComponent
     },
     {
       path: '',

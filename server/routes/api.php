@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 /*Route::group(['middleware'=>'authenticate_token'], function(){*/
-    Route::post('book', 'API\BookController@create')->name('book_create');
+    Route::post('books', 'API\BookController@store')->name('book_create');
     Route::post('request', 'API\RequestController@create')->name('request_create');
     Route::post('borrow/rent', 'API\BookController@borrowCreate');
     Route::post('{id}/acquired', 'API\BookController@acquire');
@@ -27,7 +27,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('book/{id}','API\BookController@find')->name('book_detail');
 
 
-Route::get('books','API\BookController@bookListApi')->name('get_book_name');
+Route::get('books','API\BookController@index')->name('get_book_name');
 Route::get('categories','API\CategoryController@CategoryApi')->name('get_category');
 Route::get('user/{user_id}/other-books/{book_id}', 'API\BookController@otherBookList')
     ->name('other_book_list');

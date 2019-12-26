@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
   environmentName: 'Local',
-  apiUrl: 'http://192.168.1.37:8080/api'
+  apiUrl: 'http://127.0.0.1:8000/api'
 };

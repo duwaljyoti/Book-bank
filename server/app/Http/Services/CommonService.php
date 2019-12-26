@@ -28,7 +28,6 @@ class CommonService
 
     public function save(EloquentModel $model, array $attributes, int $model_id = null)
     {
-//        dd($attributes);
         $modelObject = $model_id ? ($model->exists ? $model : $this->find($model, $model_id)) : $model;
 
         $modelObject->fill($attributes)->save();
