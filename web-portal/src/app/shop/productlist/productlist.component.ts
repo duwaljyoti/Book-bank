@@ -26,10 +26,10 @@ export class ProductlistComponent implements OnInit {
   constructor(private pageTitleService: PageTitleService, private service: ChkService) {
 
     /* Page title */
-    this.pageTitleService.setTitle(' Happy Shopping ');
-
-    /* Page subTitle */
-    this.pageTitleService.setSubTitle(' 25% Off and Free global delivery for all products ');
+    // this.pageTitleService.setTitle(' Happy Shopping ');
+    //
+    // /* Page subTitle */
+    // this.pageTitleService.setSubTitle(' 25% Off and Free global delivery for all products ');
 
     this.service.getcategories().subscribe(response => {
         this.categories = response;

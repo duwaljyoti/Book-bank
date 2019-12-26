@@ -46,6 +46,7 @@ import {TokenInterceptor} from "./shared/token.interceptor";
 import {RentRequestComponent} from "./rent-request/rent-request.component";
 import {ProductlistComponent} from "./shop/productlist/productlist.component";
 import {ProductDetailComponent} from "./shop/productDetail/productDetail.component";
+import { AddBookComponent } from './add-book/add-book.component';
 
 
 export function socialConfigs() {
@@ -83,7 +84,8 @@ export function socialConfigs() {
      PersonalRequestComponent,
      RentRequestComponent,
      ProductlistComponent,
-     ProductDetailComponent
+     ProductDetailComponent,
+     AddBookComponent
    ],
    imports: [
       BrowserModule,

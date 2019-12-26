@@ -343,4 +343,6 @@ export class ChkService {
   }
 
   getBooks = () => this.http.get<Response>('/books');
+
+  storeBook = (data) => this.http.post<Response>('/books', data);
 }
